@@ -22,7 +22,6 @@
     (clj-refactor-mode 1)
     (yas-minor-mode 1))
 
-(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'clojure-mode-hook 'enable-paredit-mode #'my-clojure-mode-hook)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
@@ -39,11 +38,12 @@
 (global-set-key (kbd "<f3>") 'cljr-thread-first-all)
 (global-set-key (kbd "<f4>") 'cljr-thread-last-all)
 (global-set-key (kbd "<f5>") 'global-linum-mode)
+(global-set-key (kbd "<f6>") #'paredit-wrap-square)
+(global-set-key (kbd "<f7>") #'paredit-wrap-curly)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key "\C-x\C-b" 'buffer-menu)
-(global-set-key "\M-[" #'paredit-wrap-square)
-(global-set-key "\M-{" #'paredit-wrap-curly)
 
 ;; Misc
 (global-prettify-symbols-mode 1)
 (require 'helm-config)
+
