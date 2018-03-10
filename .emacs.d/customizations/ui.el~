@@ -8,9 +8,9 @@
 (menu-bar-mode -1)
 
 ;; Show line numbers
-(global-linum-mode)
-
-
-(setq initial-scratch-message "")
+;(global-linum-mode)
+(auto-fill-mode) 
+(set-fill-column 120)
+(setq initial-scratch-message "Welcome to Jurassic Park.")
 
 

@@ -8,8 +8,7 @@
 (menu-bar-mode -1)
 
 ;; Show line numbers
-(global-linum-mode)
-
+;(global-linum-mode)
 
 (setq initial-scratch-message "Welcome to Jurassic Park.")
 

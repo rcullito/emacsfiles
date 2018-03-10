@@ -4,18 +4,24 @@
 (setq mc/cmds-to-run-for-all
       '(
 	buffer-menu
+	end-of-buffer
+	forward-sentence
 	indent-for-tab-command
+	keyboard-escape-quit
 	kill-region
 	menu-bar-open
 	paredit-doublequote
 	paredit-forward-slurp-sexp
+	paredit-open-round
 	paredit-splice-sexp
 	paredit-wrap-round
 	))
 
 (setq mc/cmds-to-run-once
       '(
+	cider-eval-defun-at-point
 	helm-M-x
+	paredit-backward
 	paredit-forward-delete
 	paredit-newline
 	yaml-electric-backspace
