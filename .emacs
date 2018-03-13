@@ -50,8 +50,9 @@
 (global-set-key (kbd "<f3>") 'clojure-thread-first-all)
 (global-set-key (kbd "<f4>") 'clojure-thread-last-all)
 (global-set-key (kbd "<f5>") 'global-linum-mode)
-(global-set-key (kbd "<f6>") #'paredit-wrap-square)
-(global-set-key (kbd "<f7>") #'paredit-wrap-curly)
+(global-set-key (kbd "<f6>") 'find-grep-dired)
+(global-set-key (kbd "<f7>") #'paredit-wrap-square)
+(global-set-key (kbd "<f8>") #'paredit-wrap-curly)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
