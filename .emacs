@@ -62,9 +62,4 @@
 (require 'helm-config)
 
 
-(setq cider-cljs-lein-repl
-    "(do (require 'figwheel-sidecar.repl-api)
-         (figwheel-sidecar.repl-api/start-figwheel!)
-         (figwheel-sidecar.repl-api/cljs-repl))")
-
 (global-set-key (kbd "M-o") 'ace-window)
