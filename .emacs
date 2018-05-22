@@ -11,7 +11,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (less-css-mode ace-window solidity-mode ## slim-mode slime exwm ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses cider clojure-mode-extra-font-locking smex clojure-mode paredit ido-ubiquitous helm-projectile company rainbow-delimiters projectile helm))))
+    (less-css-mode ace-window solidity-mode slim-mode slime exwm ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses cider clojure-mode-extra-font-locking smex clojure-mode paredit ido-ubiquitous helm-projectile company rainbow-delimiters projectile helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -54,16 +54,13 @@
 (global-set-key (kbd "<f7>") #'paredit-wrap-square)
 (global-set-key (kbd "<f8>") #'paredit-wrap-curly)
 (global-set-key (kbd "<f9>") 'cider-scratch)
-(global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
 ;; Misc
 (global-prettify-symbols-mode 1)
 (require 'helm-config)
 
-;; Set your lisp system and, optionally, some contribs
-(setq inferior-lisp-program "/usr/local/Cellar/sbcl/1.4.3/bin/sbcl")
-(setq slime-contribs '(slime-fancy))
 
 (setq cider-cljs-lein-repl
     "(do (require 'figwheel-sidecar.repl-api)
