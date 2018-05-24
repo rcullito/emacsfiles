@@ -11,7 +11,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (less-css-mode ace-window solidity-mode slim-mode slime exwm ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses cider clojure-mode-extra-font-locking smex clojure-mode paredit ido-ubiquitous helm-projectile company rainbow-delimiters projectile helm))))
+    (magit less-css-mode ace-window solidity-mode slim-mode slime exwm ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses cider clojure-mode-extra-font-locking smex clojure-mode paredit ido-ubiquitous helm-projectile company rainbow-delimiters projectile helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -63,3 +63,5 @@
 
 
 (global-set-key (kbd "M-o") 'ace-window)
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C--") 'undo)
