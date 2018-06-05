@@ -11,7 +11,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit less-css-mode ace-window solidity-mode slim-mode slime exwm ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses cider clojure-mode-extra-font-locking smex clojure-mode paredit ido-ubiquitous helm-projectile company rainbow-delimiters projectile helm))))
+    (cider helm-ag ag x magit less-css-mode ace-window solidity-mode slim-mode slime exwm ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses clojure-mode-extra-font-locking smex clojure-mode paredit ido-ubiquitous helm-projectile company rainbow-delimiters projectile helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -65,3 +65,26 @@
 (global-set-key (kbd "M-o") 'ace-window)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C--") 'undo)
+
+(defun custom-cider-jack-in ()
+  (interactive)
+  (let ((status-desktop-params "with-profile +figwheel repl"))
+    (set-variable 'cider-lein-parameters status-desktop-params)
+    (message "setting 'cider-lein-parameters")
+    (cider-jack-in)))
+
+(defun start-figwheel-cljs-repl ()
+  (interactive)
+  (set-buffer "*cider-repl status-react*")
+  (goto-char (point-max))
+  (insert "(do (use 'figwheel-api)
+           (start)
+           (start-cljs-repl))")
+  (cider-repl-return))
+
+(defun test-addition ()
+  (interactive)
+  (set-buffer "*cider-repl status-react*")
+  (goto-char (point-max))
+  (insert "(+ 2 8)")
+  (cider-repl-return))
