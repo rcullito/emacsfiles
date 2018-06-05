@@ -81,10 +81,3 @@
            (start)
            (start-cljs-repl))")
   (cider-repl-return))
-
-(defun test-addition ()
-  (interactive)
-  (set-buffer "*cider-repl status-react*")
-  (goto-char (point-max))
-  (insert "(+ 2 8)")
-  (cider-repl-return))
