@@ -78,6 +78,6 @@
   (set-buffer "*cider-repl status-react*")
   (goto-char (point-max))
   (insert "(do (use 'figwheel-api)
-           (start)
+           (start [:desktop])
            (start-cljs-repl))")
   (cider-repl-return))
