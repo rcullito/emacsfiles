@@ -11,7 +11,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (cider helm-ag ag x magit less-css-mode ace-window solidity-mode slim-mode slime exwm ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses clojure-mode-extra-font-locking smex clojure-mode paredit ido-ubiquitous helm-projectile company rainbow-delimiters projectile helm))))
+    (helm-ag ag x magit less-css-mode ace-window solidity-mode slim-mode slime exwm ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses clojure-mode-extra-font-locking smex clojure-mode paredit ido-ubiquitous helm-projectile company rainbow-delimiters projectile helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -65,6 +65,11 @@
 (global-set-key (kbd "M-o") 'ace-window)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C--") 'undo)
+(global-set-key (kbd "C-c p s a") 'helm-projectile-ag)
+
+
+(add-to-list 'load-path "~/rob/cider")
+(require 'cider)
 
 (defun custom-cider-jack-in ()
   (interactive)
@@ -81,3 +86,4 @@
            (start [:desktop])
            (start-cljs-repl))")
   (cider-repl-return))
+(put 'narrow-to-region 'disabled nil)
