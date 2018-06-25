@@ -66,6 +66,8 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C--") 'undo)
 (global-set-key (kbd "C-c p s a") 'helm-projectile-ag)
+(global-set-key (kbd "C-c M-h") 'custom-cider-jack-in)
+(global-set-key (kbd "C-c M-y") 'start-figwheel-cljs-repl)
 
 
 (add-to-list 'load-path "~/rob/cider")
