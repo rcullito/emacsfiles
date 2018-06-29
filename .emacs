@@ -23,10 +23,6 @@
 (which-key-mode)
 (projectile-mode)
 
-;; writers workshop
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(setq-default fill-column 110)
-
 (add-hook 'after-init-hook
 	  'global-company-mode)
 
@@ -44,7 +40,7 @@
 (load-theme 'zenburn t)
 (load "ui.el")
 
-;; global keys
+;; fn keys
 (global-set-key (kbd "<f1>") 'mc/mark-next-like-this)
 (global-set-key (kbd "<f2>") 'mc/mark-all-like-this)
 (global-set-key (kbd "<f3>") 'clojure-thread-first-all)
@@ -54,14 +50,15 @@
 (global-set-key (kbd "<f7>") #'paredit-wrap-square)
 (global-set-key (kbd "<f8>") #'paredit-wrap-curly)
 (global-set-key (kbd "<f9>") 'cider-scratch)
-;; (global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key "\C-x\C-b" 'buffer-menu)
 
 ;; Misc
 (global-prettify-symbols-mode 1)
 (require 'helm-config)
+(add-to-list 'load-path "~/rob/cider")
+(require 'cider)
+(put 'narrow-to-region 'disabled nil)
 
-
+;; other global keys
 (global-set-key (kbd "M-o") 'ace-window)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C--") 'undo)
@@ -69,10 +66,10 @@
 (global-set-key (kbd "C-c M-h") 'custom-cider-jack-in)
 (global-set-key (kbd "C-c M-y") 'start-figwheel-cljs-repl)
 (global-set-key (kbd "C-c l") 'just-no-space)
+(global-set-key "\C-x\C-b" 'buffer-menu)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
-(add-to-list 'load-path "~/rob/cider")
-(require 'cider)
-
+;; rcullito fns
 (defun custom-cider-jack-in ()
   (interactive)
   (let ((status-desktop-params "with-profile +figwheel repl"))
@@ -94,4 +91,4 @@
   (setq current-prefix-arg '(0)) ; C-u
   (call-interactively 'just-one-space))
 
-(put 'narrow-to-region 'disabled nil)
+
