@@ -11,7 +11,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (qml-mode helm-ag ag x magit less-css-mode ace-window solidity-mode slim-mode slime exwm ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses clojure-mode-extra-font-locking smex clojure-mode paredit ido-ubiquitous helm-projectile company rainbow-delimiters projectile helm))))
+    (neotree qml-mode helm-ag ag x magit less-css-mode ace-window solidity-mode slim-mode slime exwm ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses clojure-mode-extra-font-locking smex clojure-mode paredit ido-ubiquitous helm-projectile company rainbow-delimiters projectile helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -68,7 +68,7 @@
 (global-set-key (kbd "C-c l") 'just-no-space)
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-i") 'transpose-sexps)
+
 
 ;; rcullito fns
 (defun custom-cider-jack-in ()
@@ -91,5 +91,4 @@
   (interactive)
   (setq current-prefix-arg '(0)) ; C-u
   (call-interactively 'just-one-space))
-
 
