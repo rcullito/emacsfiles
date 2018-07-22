@@ -50,6 +50,7 @@
 (global-set-key (kbd "<f7>") #'paredit-wrap-square)
 (global-set-key (kbd "<f8>") #'paredit-wrap-curly)
 (global-set-key (kbd "<f9>") 'cider-scratch)
+(global-set-key (kbd "<f10>") 'transpose-sexps)
 
 ;; Misc
 (global-prettify-symbols-mode 1)
