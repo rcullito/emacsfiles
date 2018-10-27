@@ -1,4 +1,5 @@
-(require 'package) 
+(require 'package)
+(require 'cl)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 (when (< emacs-major-version 24)
@@ -9,7 +10,6 @@
  qml-mode
  helm-ag
  ag
- x
  magit
  less-css-mode
  ace-window
@@ -28,7 +28,6 @@
  clojure-mode-extra-font-locking
  smex clojure-mode
  paredit
- ido-ubiquitous
  helm-projectile
  company
  rainbow-delimiters
@@ -56,7 +55,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   rcullito/packages))
+   (quote
+    (neotree qml-mode helm-ag ag magit less-css-mode ace-window solidity-mode slim-mode slime ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses clojure-mode-extra-font-locking smex clojure-mode paredit helm-projectile company rainbow-delimiters projectile helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
