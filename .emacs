@@ -38,7 +38,7 @@
  helm)
   "Default packages")
 
-;; forked from http://aaronbedra.com/emacs.d/
+;; taken from http://aaronbedra.com/emacs.d/
 (defun rcullito/packages-installed-p ()
   (loop for pkg in rcullito/packages
         when (not (package-installed-p pkg)) do (return nil)
