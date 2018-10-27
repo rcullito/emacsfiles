@@ -58,8 +58,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (neotree qml-mode helm-ag ag magit less-css-mode ace-window solidity-mode slim-mode slime ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses clojure-mode-extra-font-locking smex clojure-mode paredit helm-projectile company rainbow-delimiters projectile helm))))
+   (quote rcullito/packages)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
