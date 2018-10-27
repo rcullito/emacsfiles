@@ -144,3 +144,4 @@
 (menu-bar-mode -1)
 (setq inhibit-splash-screen t
       initial-scratch-message "Welcome to Jurassic Park.")
+(setq make-backup-files nil)
