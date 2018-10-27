@@ -6,6 +6,9 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
+(setq user-full-name "Rob Culliton")
+(setq user-mail-address "rob.culliton@gmail.com")
+
 (defvar rcullito/packages '(neotree
  qml-mode
  helm-ag
@@ -35,7 +38,7 @@
  helm)
   "Default packages")
 
-;; taken from http://aaronbedra.com/emacs.d/
+;; forked from http://aaronbedra.com/emacs.d/
 (defun rcullito/packages-installed-p ()
   (loop for pkg in rcullito/packages
         when (not (package-installed-p pkg)) do (return nil)
@@ -81,9 +84,7 @@
 
 ;; emacs.d stuff
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(add-to-list 'load-path "~/.emacs.d/customizations")
 (load-theme 'zenburn t)
-(load "ui.el")
 
 ;; fn keys
 (global-set-key (kbd "<f1>") 'mc/mark-next-like-this)
@@ -138,3 +139,8 @@
   (setq current-prefix-arg '(0)) ; C-u
   (call-interactively 'just-one-space))
 
+
+;; Turn off the menu bar at the top of each frame because it's distracting
+(menu-bar-mode -1)
+(setq inhibit-splash-screen t
+      initial-scratch-message "Welcome to Jurassic Park.")
