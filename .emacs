@@ -3,15 +3,60 @@
 	     '("melpa" . "https://melpa.org/packages/"))
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize) 
+(package-initialize)
+
+(defvar rcullito/packages '(neotree
+ qml-mode
+ helm-ag
+ ag
+ x
+ magit
+ less-css-mode
+ ace-window
+ solidity-mode
+ slim-mode slime
+ ensime
+ scala-mode
+ clj-refactor
+ yaml-mode
+ markdown-mode+
+ markdown-preview-mode
+ markdown-mode
+ which-key
+ multiple-cursors
+ highlight-parentheses
+ clojure-mode-extra-font-locking
+ smex clojure-mode
+ paredit
+ ido-ubiquitous
+ helm-projectile
+ company
+ rainbow-delimiters
+ projectile
+ helm)
+  "Default packages")
+
+;; forked from http://aaronbedra.com/emacs.d/
+(defun rcullito/packages-installed-p ()
+  (loop for pkg in rcullito/packages
+        when (not (package-installed-p pkg)) do (return nil)
+        finally (return t)))
+
+(unless (rcullito/packages-installed-p)
+  (message "%s" "Refreshing package database...")
+  (package-refresh-contents)
+  (dolist (pkg rcullito/packages)
+    (when (not (package-installed-p pkg))
+      (package-install pkg))))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (neotree qml-mode helm-ag ag x magit less-css-mode ace-window solidity-mode slim-mode slime exwm ensime scala-mode clj-refactor yaml-mode markdown-mode+ markdown-preview-mode markdown-mode which-key multiple-cursors highlight-parentheses clojure-mode-extra-font-locking smex clojure-mode paredit ido-ubiquitous helm-projectile company rainbow-delimiters projectile helm))))
+   rcullito/packages))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
