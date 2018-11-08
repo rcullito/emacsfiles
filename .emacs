@@ -99,16 +99,23 @@
 
 ;; Misc
 (global-prettify-symbols-mode 1)
-(require 'helm-config)
 (add-to-list 'load-path "~/rob/cider")
 (require 'cider)
 (put 'narrow-to-region 'disabled nil)
+
+;; 11/8/2018
+(require 'helm-projectile)
+(helm-projectile-on)
 
 ;; other global keys
 (global-set-key (kbd "M-o") 'ace-window)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C--") 'undo)
 (global-set-key (kbd "C-c p s a") 'helm-projectile-ag)
+;; ideally these next two should not need to be manually set and should
+;; be set within helm-projectile itself
+(global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
+(global-set-key (kbd "C-c p h") 'helm-projectile)
 (global-set-key (kbd "C-c M-h") 'custom-cider-jack-in)
 (global-set-key (kbd "C-c M-y") 'start-figwheel-cljs-repl)
 (global-set-key (kbd "C-c l") 'just-no-space)
