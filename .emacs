@@ -20,8 +20,10 @@
  slim-mode slime
  ensime
  scala-mode
- clj-refactor
  yaml-mode
+ cider
+ cmake-mode
+ clj-refactor
  markdown-mode+
  markdown-preview-mode
  markdown-mode
@@ -59,18 +61,13 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote rcullito/packages)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;; modes
 (which-key-mode)
 (projectile-mode)
 
 (add-hook 'after-init-hook
+	  'neotree-toggle
 	  'global-company-mode)
 
 (defun my-clojure-mode-hook ()
@@ -99,8 +96,6 @@
 
 ;; Misc
 (global-prettify-symbols-mode 1)
-(add-to-list 'load-path "~/rob/cider")
-(require 'cider)
 (put 'narrow-to-region 'disabled nil)
 
 ;; 11/8/2018
@@ -116,29 +111,11 @@
 ;; be set within helm-projectile itself
 (global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
 (global-set-key (kbd "C-c p h") 'helm-projectile)
-(global-set-key (kbd "C-c M-h") 'custom-cider-jack-in)
-(global-set-key (kbd "C-c M-y") 'start-figwheel-cljs-repl)
+;; (global-set-key (kbd "C-c M-h") 'custom-cider-jack-in)
+;; (global-set-key (kbd "C-c M-y") 'start-figwheel-cljs-repl)
 (global-set-key (kbd "C-c l") 'just-no-space)
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key (kbd "M-x") 'helm-M-x)
-
-
-;; rcullito fns
-(defun custom-cider-jack-in ()
-  (interactive)
-  (let ((status-desktop-params "with-profile +figwheel repl"))
-    (set-variable 'cider-lein-parameters status-desktop-params)
-    (message "setting 'cider-lein-parameters")
-    (cider-jack-in)))
-
-(defun start-figwheel-cljs-repl ()
-  (interactive)
-  (set-buffer "*cider-repl status-react*")
-  (goto-char (point-max))
-  (insert "(do (use 'figwheel-api)
-           (start [:desktop])
-           (start-cljs-repl))")
-  (cider-repl-return))
 
 (defun just-no-space ()
   (interactive)
