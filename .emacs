@@ -111,8 +111,6 @@
 ;; be set within helm-projectile itself
 (global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
 (global-set-key (kbd "C-c p h") 'helm-projectile)
-;; (global-set-key (kbd "C-c M-h") 'custom-cider-jack-in)
-;; (global-set-key (kbd "C-c M-y") 'start-figwheel-cljs-repl)
 (global-set-key (kbd "C-c l") 'just-no-space)
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key (kbd "M-x") 'helm-M-x)
