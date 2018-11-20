@@ -126,3 +126,9 @@
 (setq inhibit-splash-screen t
       initial-scratch-message "Welcome to Jurassic Park.")
 (setq make-backup-files nil)
+(defun status-desktop-connect ()
+  (interactive)
+  ;; require and repl, but no need to start figwheel again!
+  (cider-register-cljs-repl-type 'figwheel-cljs "(do (require 'figwheel-sidecar.repl-api) (figwheel-sidecar.repl-api/cljs-repl))")
+  (setq cider-default-cljs-repl 'figwheel-cljs)
+  (cider-connect-cljs '(:host "localhost" :port 7888)))
