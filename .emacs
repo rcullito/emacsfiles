@@ -60,14 +60,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote rcullito/packages)))
+   (quote
+    (solidity-mode yaml-mode which-key smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile helm-ag ensime cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))))
 
 ;; modes
 (which-key-mode)
 (projectile-mode)
-
+(setq-default indent-tabs-mode nil)
 (add-hook 'after-init-hook
-	  'neotree-toggle
 	  'global-company-mode)
 
 (defun my-clojure-mode-hook ()
@@ -126,6 +126,13 @@
 (setq inhibit-splash-screen t
       initial-scratch-message "Welcome to Jurassic Park.")
 (setq make-backup-files nil)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
 (defun status-desktop-connect ()
   (interactive)
   ;; require and repl, but no need to start figwheel again!
