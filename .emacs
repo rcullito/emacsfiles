@@ -60,8 +60,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (solidity-mode yaml-mode which-key smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile helm-ag ensime cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))))
+   (quote rcullito/packages)))
 
 ;; modes
 (which-key-mode)
