@@ -123,7 +123,7 @@
 ;; Turn off the menu bar at the top of each frame because it's distracting
 (menu-bar-mode -1)
 (setq inhibit-splash-screen t
-      initial-scratch-message "Welcome to Jurassic Park.")
+      initial-scratch-message "")
 (setq make-backup-files nil)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -138,3 +138,7 @@
   (cider-register-cljs-repl-type 'figwheel-cljs "(do (require 'figwheel-sidecar.repl-api) (figwheel-sidecar.repl-api/cljs-repl))")
   (setq cider-default-cljs-repl 'figwheel-cljs)
   (cider-connect-cljs '(:host "localhost" :port 7888)))
+
+(defun quick-commit (commit-message)
+  (when (magit-git-success "commit" "-m" commit-message)
+    (message "commmited!")))
