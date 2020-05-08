@@ -140,5 +140,6 @@
   (cider-connect-cljs '(:host "localhost" :port 7888)))
 
 (defun quick-commit (commit-message)
+  (interactive "sEnter your commit message: ")
   (when (magit-git-success "commit" "-m" commit-message)
     (message "commmited!")))
