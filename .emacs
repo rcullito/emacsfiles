@@ -157,10 +157,9 @@
       (progn (message "commmited!")
              (magit-refresh-buffer))))
    (t
-    (user-error "No changes"))))
+    (user-error "No changes since last commit"))))
 
-;; hold off on using this for now, still TBD
-;; if we wanted to also push directly with magit  it would be:
+;; push w/ magit
 ;; (magit-push-current-to-upstream nil)
 
 
