@@ -73,15 +73,11 @@
     (clj-refactor-mode 1)
     (yas-minor-mode 1))
 
-(defun my-magit-hook ()
-  (define-key magit-mode-map
-    (kbd "Q")
-    'quick-commit))
 
 (add-hook 'clojure-mode-hook 'enable-paredit-mode #'my-clojure-mode-hook)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
-(add-hook 'magit-mode-hook 'my-magit-hook)
+
 ;; emacs.d stuff
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'zenburn t)
@@ -137,12 +133,14 @@
  ;; If there is more than one, they won't work right.
  )
 
-(defun status-desktop-connect ()
-  (interactive)
-  ;; require and repl, but no need to start figwheel again!
-  (cider-register-cljs-repl-type 'figwheel-cljs "(do (require 'figwheel-sidecar.repl-api) (figwheel-sidecar.repl-api/cljs-repl))")
-  (setq cider-default-cljs-repl 'figwheel-cljs)
-  (cider-connect-cljs '(:host "localhost" :port 7888)))
+
+;; magit custom code
+(defun my-magit-hook ()
+  (define-key magit-mode-map
+    (kbd "Q")
+    'quick-commit))
+
+(add-hook 'magit-mode-hook 'my-magit-hook)
 
 (defun quick-commit (commit-message)
   (interactive "sEnter your commit message: ")
