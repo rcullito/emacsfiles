@@ -138,7 +138,7 @@
 (defun my-magit-hook ()
   (define-key magit-mode-map
     (kbd "Q")
-    'quick-commit))
+    'quick-commit-and-push))
 
 (add-hook 'magit-mode-hook 'my-magit-hook)
 
@@ -147,5 +147,13 @@
   (when (magit-git-success "commit" "-m" commit-message)
     (progn (message "commmited!")
            (magit-refresh-buffer))))
+
+;; todo, potentially create a macro that just swaps out the final form here
+
+(defun quick-commit-and-push (commit-message)
+  (interactive "sEnter your commit message: ")
+  (when (magit-git-success "commit" "-m" commit-message)
+    (progn (message "commmited!")
+           (magit-push-current-to-upstream nil))))
 
 
