@@ -138,14 +138,14 @@
 (defun my-magit-hook ()
   (define-key magit-mode-map
     (kbd "Q")
-    'quick-commit))
+    'quick-commit-and-push))
 
 (add-hook 'magit-mode-hook 'my-magit-hook)
 
 ;; this helper fn will properly handle
 ;; will prompt to stage automatically if anything is still unstaged
 ;; will let you know if there have been no changes at all
-(defun quick-commit (commit-message)
+(defun quick-commit-and-push (commit-message)
   (interactive "sEnter your commit message: ")
   (cond 
    ((magit-anything-unstaged-p)
@@ -155,11 +155,8 @@
    ((magit-anything-staged-p)
     (when (magit-git-success "commit" "-m" commit-message)
       (progn (message "commmited!")
-             (magit-refresh-buffer))))
+             ;;(magit-refresh-buffer)
+             (magit-push-current-to-upstream nil))))
    (t
     (user-error "No changes since last commit"))))
-
-;; push w/ magit
-;; (magit-push-current-to-upstream nil)
-
 
