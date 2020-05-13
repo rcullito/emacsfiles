@@ -151,7 +151,7 @@
    ((magit-anything-unstaged-p)
     (when (y-or-n-p "Stage and commit all unstaged changes? ")
       (progn (magit-run-git "add" "-u" ".")
-             (quick-commit commit-message))))
+             (quick-commit-and-push commit-message))))
    ((magit-anything-staged-p)
     (when (magit-git-success "commit" "-m" commit-message)
       (progn (message "commmited!")
