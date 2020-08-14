@@ -18,7 +18,6 @@
  ace-window
  solidity-mode
  slim-mode slime
- ensime
  scala-mode
  yaml-mode
  cider
@@ -61,7 +60,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (kotlin-mode use-package pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile helm-ag ensime cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))))
+    (kotlin-mode use-package pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile helm-ag cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))))
 
 ;; modes
 (which-key-mode)
