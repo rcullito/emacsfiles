@@ -60,7 +60,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote rcullito/packages)))
+   (quote
+    (kotlin-mode use-package pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile helm-ag ensime cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))))
 
 ;; modes
 (which-key-mode)
@@ -160,3 +161,7 @@
    (t
     (user-error "No changes since last commit"))))
 
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
