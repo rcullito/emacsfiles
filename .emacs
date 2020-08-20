@@ -1,4 +1,5 @@
 (require 'package)
+(setq byte-compile-warnings '(cl-functions))
 (require 'cl)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
@@ -60,7 +61,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (kotlin-mode use-package pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile helm-ag cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))))
+    (kotlin-mode pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile helm-ag cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))))
 
 ;; modes
 (which-key-mode)
@@ -114,7 +115,7 @@
 (global-set-key (kbd "C-c l") 'just-no-space)
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key (kbd "M-x") 'helm-M-x)
-
+(global-set-key (kbd "C-c M-y") 'start-mount)
 (defun just-no-space ()
   (interactive)
   (setq current-prefix-arg '(0)) ; C-u
@@ -160,7 +161,9 @@
    (t
     (user-error "No changes since last commit"))))
 
-(use-package elpy
-  :ensure t
-  :init
-  (elpy-enable))
+(defun start-mount ()
+  (interactive)
+  (goto-char (point-max))
+  (insert "(mount.core/start)")
+  (cider-repl-return))
+
