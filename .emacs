@@ -60,8 +60,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (kotlin-mode pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile helm-ag cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))))
+   '(flycheck-clj-kondo flycheck deadgrep kotlin-mode pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile helm-ag cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))
+ '(safe-local-variable-values
+   '((cider-figwheel-main-default-options . "dev")
+     (cider-default-cljs-repl . figwheel-main))))
 
 ;; modes
 (which-key-mode)
@@ -69,6 +71,10 @@
 (setq-default indent-tabs-mode nil)
 (add-hook 'after-init-hook
 	  'global-company-mode)
+
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(require 'flycheck-clj-kondo)
 
 (defun my-clojure-mode-hook ()
     (clj-refactor-mode 1)
@@ -101,6 +107,8 @@
 
 ;; 11/8/2018
 (require 'helm-projectile)
+
+
 (helm-projectile-on)
 
 ;; other global keys
