@@ -11,7 +11,10 @@
 (setq user-mail-address "rob.culliton@gmail.com")
 
 (defvar rcullito/packages '(neotree
- qml-mode
+                            qml-mode
+                            flycheck
+                            flycheck-clj-kondo
+                            deadgrep
  helm-ag
  ag
  magit
