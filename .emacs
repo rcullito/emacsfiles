@@ -15,7 +15,7 @@
                             flycheck
                             flycheck-clj-kondo
                             deadgrep
- helm-ag
+ helm-rg
  ag
  magit
  less-css-mode
@@ -63,7 +63,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(flycheck-clj-kondo flycheck deadgrep kotlin-mode pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile helm-ag cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))
+   '(helm-rg flycheck-clj-kondo flycheck deadgrep kotlin-mode pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))
  '(safe-local-variable-values
    '((cider-figwheel-main-default-options . "dev")
      (cider-default-cljs-repl . figwheel-main))))
@@ -71,9 +71,12 @@
 ;; modes
 (which-key-mode)
 (projectile-mode)
+(global-auto-revert-mode)
+
 (setq-default indent-tabs-mode nil)
 (add-hook 'after-init-hook
 	  'global-company-mode)
+
 
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -117,9 +120,9 @@
 (global-set-key (kbd "M-o") 'ace-window)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C--") 'undo)
-(global-set-key (kbd "C-c p s a") 'helm-projectile-ag)
 ;; ideally these next two should not need to be manually set and should
 ;; be set within helm-projectile itself
+(global-set-key (kbd "C-c d") 'helm-rg)
 (global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
 (global-set-key (kbd "C-c p h") 'helm-projectile)
 (global-set-key (kbd "C-c l") 'just-no-space)
