@@ -98,9 +98,8 @@
 (global-set-key (kbd "<f3>") 'clojure-thread-first-all)
 (global-set-key (kbd "<f4>") 'clojure-thread-last-all)
 (global-set-key (kbd "<f5>") 'global-linum-mode)
-(global-set-key (kbd "<f6>") 'find-grep-dired)
+(global-set-key (kbd "<f6>") #'deadgrep)
 (global-set-key (kbd "<f7>") #'paredit-wrap-square)
-(global-set-key (kbd "<f8>") #'paredit-wrap-curly)
 (global-set-key (kbd "<f9>") 'cider-scratch)
 (global-set-key (kbd "<f10>") 'transpose-sexps)
 
@@ -124,6 +123,7 @@
 (global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
 (global-set-key (kbd "C-c p h") 'helm-projectile)
 (global-set-key (kbd "C-c l") 'just-no-space)
+(global-set-key (kbd "C-c u") 'delete-indentation)
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-c M-y") 'start-mount)
