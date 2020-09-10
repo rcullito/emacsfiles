@@ -122,7 +122,7 @@
 (global-set-key (kbd "C--") 'undo)
 ;; ideally these next two should not need to be manually set and should
 ;; be set within helm-projectile itself
-(global-set-key (kbd "C-c d") 'helm-rg)
+(global-set-key (kbd "C-c d") 'helm-projectile-rg)
 (global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
 (global-set-key (kbd "C-c p h") 'helm-projectile)
 (global-set-key (kbd "C-c l") 'just-no-space)
