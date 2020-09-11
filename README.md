@@ -1,8 +1,18 @@
 
 ## Setup
 
-1. copy `.emacs` and `.emacs.d` from this repo to your home directory
-2. packages that are not already installed will be installed on the first emacs run
+Clone this repository alongside other local projects, i.e.: 
+
+`cd ~/rob`
+`git clone git@github.com:rcullito/emacs.git`
+`cd`
+
+Symlink .emacs and .emacs.d to home directory
+
+`ln -s ~/rob/emacs/.emacs .emacs`
+`ln -s ~/rob/emacs/.emacs.d .emacs.d`
+
+Packages that are not already installed will be installed on the first emacs run
 
 
 
