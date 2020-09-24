@@ -1,6 +1,26 @@
+(setq straight-vc-git-default-protocol 'ssh)
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+(straight-use-package
+ '(el-patch :type git :host github :repo "Guaranteed-Rate/guaranteed-emacs"))
+(require 'guaranteed-emacs)
+(set-common-vars)
+(setenv "PROCESS_QUEUES" "true")
+
+
 (require 'package)
-(setq byte-compile-warnings '(cl-functions))
-(require 'cl)
+
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 (when (< emacs-major-version 24)
@@ -15,7 +35,7 @@
                             flycheck
                             flycheck-clj-kondo
                             deadgrep
- helm-rg
+                            helm-rg
  ag
  magit
  less-css-mode
@@ -62,8 +82,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+
  '(package-selected-packages
-   '(terraform-mode helm-rg flycheck-clj-kondo flycheck deadgrep kotlin-mode pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))
+   '(idle-highlight-mode smooth-scroll dracula-theme hippie-expand-slime browse-kill-ring nyan-mode terraform-mode helm-rg flycheck-clj-kondo flycheck deadgrep kotlin-mode pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))
  '(safe-local-variable-values
    '((cider-figwheel-main-default-options . "dev")
      (cider-default-cljs-repl . figwheel-main))))
@@ -78,16 +99,18 @@
 	  'global-company-mode)
 
 
-
-(add-hook 'after-init-hook #'global-flycheck-mode)
 (require 'flycheck-clj-kondo)
+(require 'smooth-scrolling)
 
 (defun my-clojure-mode-hook ()
     (clj-refactor-mode 1)
-    (yas-minor-mode 1))
+    (yas-minor-mode 1)
+    (idle-highlight-mode t)
+    (smooth-scrolling-mode 1)
+    (paredit-mode t))
 
-
-(add-hook 'clojure-mode-hook 'enable-paredit-mode #'my-clojure-mode-hook)
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+(add-hook 'clojure-mode-hook #'global-flycheck-mode)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
 
@@ -95,16 +118,18 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'zenburn t)
 
+
+
 ;; fn keys
 (global-set-key (kbd "<f1>") 'mc/mark-next-like-this)
 (global-set-key (kbd "<f2>") 'mc/mark-all-like-this)
 (global-set-key (kbd "<f3>") 'clojure-thread-first-all)
-(global-set-key (kbd "<f4>") 'clojure-thread-last-all)
-(global-set-key (kbd "<f5>") 'global-linum-mode)
+(global-set-key (kbd "<f4>") 'backward-paragraph)
+(global-set-key (kbd "<f5>") 'forward-paragraph)
 (global-set-key (kbd "<f6>") #'deadgrep)
 (global-set-key (kbd "<f7>") #'paredit-wrap-square)
-(global-set-key (kbd "<f9>") 'cider-scratch)
-(global-set-key (kbd "<f10>") 'transpose-sexps)
+(global-set-key (kbd "<f8>") #'paredit-wrap-curly)
+(global-set-key (kbd "<f9>") 'global-linum-mode)
 
 ;; Misc
 (global-prettify-symbols-mode 1)
@@ -128,7 +153,8 @@
 (global-set-key (kbd "C-c u") 'delete-indentation)
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-c M-y") 'start-mount)
+(global-set-key "\M-/" 'hippie-expand)
+
 (defun just-no-space ()
   (interactive)
   (setq current-prefix-arg '(0)) ; C-u
