@@ -24,20 +24,13 @@
 (straight-use-package 'projectile)
 (straight-use-package 'ht)
 (straight-use-package 'browse-kill-ring)
-(straight-use-package 'nyan-mode)
 (straight-use-package 'terraform-mode)
 (straight-use-package 'helm-rg)
 (straight-use-package 'flycheck)
 (straight-use-package 'flycheck-clj-kondo)
 (straight-use-package 'deadgrep)
-(straight-use-package 'kotlin-mode)
-(straight-use-package 'pyenv-mode)
-(straight-use-package 'elpy)
-(straight-use-package 'request-deferred)
-(straight-use-package 'request)
 (straight-use-package 'yaml-mode)
 (straight-use-package 'which-key)
-(straight-use-package 'solidity-mode)
 (straight-use-package 'smooth-scrolling)
 (straight-use-package 'smex)
 (straight-use-package 'slime)
@@ -45,7 +38,6 @@
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'qml-mode)
 (straight-use-package 'neotree)
-(straight-use-package 'markdown-preview-mode)
 (straight-use-package 'magit)
 (straight-use-package 'highlight-parentheses)
 (straight-use-package 'helm-projectile)
@@ -63,6 +55,7 @@
 (set-common-vars)
 (setenv "PROCESS_QUEUES" "true")
 
+(menu-bar-mode -1)
 
 ;; modes
 (which-key-mode)
@@ -93,8 +86,6 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'zenburn t)
 
-
-
 ;; fn keys
 (global-set-key (kbd "<f1>") 'mc/mark-next-like-this)
 (global-set-key (kbd "<f2>") 'mc/mark-all-like-this)
@@ -112,8 +103,6 @@
 
 ;; 11/8/2018
 (require 'helm-projectile)
-
-
 (helm-projectile-on)
 
 ;; other global keys
@@ -135,9 +124,6 @@
   (setq current-prefix-arg '(0)) ; C-u
   (call-interactively 'just-one-space))
 
-
-;; Turn off the menu bar at the top of each frame because it's distracting
-(menu-bar-mode -1)
 (setq inhibit-splash-screen t
       initial-scratch-message "")
 (setq make-backup-files nil)
@@ -149,28 +135,3 @@
  )
 
 
-;; magit custom code
-(defun my-magit-hook ()
-  (define-key magit-mode-map
-    (kbd "Q")
-    'quick-commit-and-push))
-
-(add-hook 'magit-mode-hook 'my-magit-hook)
-
-;; this helper fn will properly handle
-;; will prompt to stage automatically if anything is still unstaged
-;; will let you know if there have been no changes at all
-(defun quick-commit-and-push (commit-message)
-  (interactive "sEnter your commit message: ")
-  (cond 
-   ((magit-anything-unstaged-p)
-    (when (y-or-n-p "Stage and commit all unstaged changes? ")
-      (progn (magit-run-git "add" "-u" ".")
-             (quick-commit-and-push commit-message))))
-   ((magit-anything-staged-p)
-    (when (magit-git-success "commit" "-m" commit-message)
-      (progn (message "commmited!")
-             ;;(magit-refresh-buffer)
-             (magit-push-current-to-upstream nil))))
-   (t
-    (user-error "No changes since last commit"))))
