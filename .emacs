@@ -32,11 +32,8 @@
 (straight-use-package 'yaml-mode)
 (straight-use-package 'which-key)
 (straight-use-package 'smooth-scrolling)
-(straight-use-package 'smex)
 (straight-use-package 'slime)
-(straight-use-package 'slim-mode)
 (straight-use-package 'rainbow-delimiters)
-(straight-use-package 'qml-mode)
 (straight-use-package 'neotree)
 (straight-use-package 'magit)
 (straight-use-package 'highlight-parentheses)
@@ -71,11 +68,11 @@
 (require 'smooth-scrolling)
 
 (defun my-clojure-mode-hook ()
-    (clj-refactor-mode 1)
-    (yas-minor-mode 1)
-    (idle-highlight-mode t)
-    (smooth-scrolling-mode 1)
-    (paredit-mode t))
+  (clj-refactor-mode 1)
+  (yas-minor-mode 1)
+  (idle-highlight-mode t)
+  (smooth-scrolling-mode 1)
+  (paredit-mode t))
 
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 (add-hook 'clojure-mode-hook #'global-flycheck-mode)
@@ -127,11 +124,5 @@
 (setq inhibit-splash-screen t
       initial-scratch-message "")
 (setq make-backup-files nil)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 
