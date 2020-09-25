@@ -12,82 +12,57 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+;;;;  Effectively replace use-package with straight-use-package
+;;; https://github.com/raxod502/straight.el/blob/develop/README.md#integration-with-use-package
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
+
+(setq user-full-name "Rob Culliton")
+(setq user-mail-address "rob.culliton@gmail.com")
+
+(straight-use-package 'helm)
+(straight-use-package 'projectile)
+(straight-use-package 'ht)
+(straight-use-package 'browse-kill-ring)
+(straight-use-package 'nyan-mode)
+(straight-use-package 'terraform-mode)
+(straight-use-package 'helm-rg)
+(straight-use-package 'flycheck)
+(straight-use-package 'flycheck-clj-kondo)
+(straight-use-package 'deadgrep)
+(straight-use-package 'kotlin-mode)
+(straight-use-package 'pyenv-mode)
+(straight-use-package 'elpy)
+(straight-use-package 'request-deferred)
+(straight-use-package 'request)
+(straight-use-package 'yaml-mode)
+(straight-use-package 'which-key)
+(straight-use-package 'solidity-mode)
+(straight-use-package 'smooth-scrolling)
+(straight-use-package 'smex)
+(straight-use-package 'slime)
+(straight-use-package 'slim-mode)
+(straight-use-package 'rainbow-delimiters)
+(straight-use-package 'qml-mode)
+(straight-use-package 'neotree)
+(straight-use-package 'markdown-preview-mode)
+(straight-use-package 'magit)
+(straight-use-package 'highlight-parentheses)
+(straight-use-package 'helm-projectile)
+(straight-use-package 'clojure-mode)
+(straight-use-package 'clojure-mode-extra-font-locking)
+(straight-use-package 'clj-refactor)
+(straight-use-package 'ace-window)
+(straight-use-package 'cider)
+(straight-use-package 'multiple-cursors)
+(straight-use-package 'paredit) 
+
 (straight-use-package
  '(el-patch :type git :host github :repo "Guaranteed-Rate/guaranteed-emacs"))
 (require 'guaranteed-emacs)
 (set-common-vars)
 (setenv "PROCESS_QUEUES" "true")
 
-
-(require 'package)
-
-(add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
-(when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize)
-
-(setq user-full-name "Rob Culliton")
-(setq user-mail-address "rob.culliton@gmail.com")
-
-(defvar rcullito/packages '(neotree
-                            qml-mode
-                            flycheck
-                            flycheck-clj-kondo
-                            deadgrep
-                            helm-rg
- ag
- magit
- less-css-mode
- ace-window
- solidity-mode
- slim-mode slime
- scala-mode
- yaml-mode
- cider
- cmake-mode
- clj-refactor
- markdown-mode+
- markdown-preview-mode
- markdown-mode
- which-key
- multiple-cursors
- highlight-parentheses
- clojure-mode-extra-font-locking
- smex clojure-mode
- paredit
- helm-projectile
- company
- rainbow-delimiters
- projectile
- helm)
-  "Default packages")
-
-;; taken from http://aaronbedra.com/emacs.d/
-(defun rcullito/packages-installed-p ()
-  (loop for pkg in rcullito/packages
-        when (not (package-installed-p pkg)) do (return nil)
-        finally (return t)))
-
-(unless (rcullito/packages-installed-p)
-  (message "%s" "Refreshing package database...")
-  (package-refresh-contents)
-  (dolist (pkg rcullito/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
-
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
-
- '(package-selected-packages
-   '(idle-highlight-mode smooth-scroll dracula-theme hippie-expand-slime browse-kill-ring nyan-mode terraform-mode helm-rg flycheck-clj-kondo flycheck deadgrep kotlin-mode pyenv-mode elpy request-deferred request restclient yaml-mode which-key solidity-mode smooth-scrolling smex slime slim-mode rainbow-delimiters qml-mode neotree markdown-preview-mode markdown-mode+ magit less-css-mode highlight-parentheses helm-projectile cmake-mode clojure-mode-extra-font-locking clj-refactor ag ace-window))
- '(safe-local-variable-values
-   '((cider-figwheel-main-default-options . "dev")
-     (cider-default-cljs-repl . figwheel-main))))
 
 ;; modes
 (which-key-mode)
@@ -199,10 +174,3 @@
              (magit-push-current-to-upstream nil))))
    (t
     (user-error "No changes since last commit"))))
-
-(defun start-mount ()
-  (interactive)
-  (goto-char (point-max))
-  (insert "(mount.core/start)")
-  (cider-repl-return))
-
