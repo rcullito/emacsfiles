@@ -20,12 +20,12 @@
 (setq user-full-name "Rob Culliton")
 (setq user-mail-address "rob.culliton@gmail.com")
 
+;; TODO compile with module support
+(straight-use-package 'vterm)
 (straight-use-package 'helm)
 (straight-use-package 'projectile)
-(straight-use-package 'ht)
 (straight-use-package 'browse-kill-ring)
 (straight-use-package 'terraform-mode)
-(straight-use-package 'helm-rg)
 (straight-use-package 'flycheck)
 (straight-use-package 'flycheck-clj-kondo)
 (straight-use-package 'deadgrep)
@@ -44,44 +44,46 @@
 (straight-use-package 'ace-window)
 (straight-use-package 'cider)
 (straight-use-package 'multiple-cursors)
-(straight-use-package 'paredit) 
+(straight-use-package 'paredit)
+(straight-use-package 'dumb-jump)
 
 (straight-use-package
- '(el-patch :type git :host github :repo "Guaranteed-Rate/guaranteed-emacs"))
+ '(guaranteed-emacs :type git :host github :repo "Guaranteed-Rate/guaranteed-emacs"))
 (require 'guaranteed-emacs)
 (set-common-vars)
 (setenv "PROCESS_QUEUES" "true")
 
-(menu-bar-mode -1)
-
 ;; modes
+(menu-bar-mode -1)
 (which-key-mode)
 (projectile-mode)
 (global-auto-revert-mode)
-
 (setq-default indent-tabs-mode nil)
-(add-hook 'after-init-hook
-	  'global-company-mode)
-
 
 (require 'flycheck-clj-kondo)
 (require 'smooth-scrolling)
 
+;; hooks
 (defun my-clojure-mode-hook ()
   (clj-refactor-mode 1)
   (yas-minor-mode 1)
   (idle-highlight-mode t)
   (smooth-scrolling-mode 1)
-  (paredit-mode t))
+  (paredit-mode t)
+  (global-flycheck-mode))
 
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
-(add-hook 'clojure-mode-hook #'global-flycheck-mode)
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode) ;; prog mode is a major mode by emacs, upon which many programming related major modes are derived
 (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
+(add-hook 'after-init-hook 'global-company-mode) ;; company mode is a text completion framework for emacs
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
-;; emacs.d stuff
+;; themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'zenburn t)
+
+;; (global-hl-line-mode t)
+;; (set-face-background hl-line-face "thistle4")
 
 ;; fn keys
 (global-set-key (kbd "<f1>") 'mc/mark-next-like-this)
@@ -89,7 +91,7 @@
 (global-set-key (kbd "<f3>") 'clojure-thread-first-all)
 (global-set-key (kbd "<f4>") 'backward-paragraph)
 (global-set-key (kbd "<f5>") 'forward-paragraph)
-(global-set-key (kbd "<f6>") #'deadgrep)
+(global-set-key (kbd "<f6>") 'vterm)
 (global-set-key (kbd "<f7>") #'paredit-wrap-square)
 (global-set-key (kbd "<f8>") #'paredit-wrap-curly)
 (global-set-key (kbd "<f9>") 'global-linum-mode)
@@ -107,7 +109,7 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C--") 'undo)
 (global-set-key (kbd "C-c s") 'projectile-switch-project)
-(global-set-key (kbd "C-c d") 'helm-projectile-rg)
+(global-set-key (kbd "C-c d") #'deadgrep)
 (global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
 (global-set-key (kbd "C-c p h") 'helm-projectile)
 (global-set-key (kbd "C-c l") 'just-no-space)
@@ -126,3 +128,15 @@
 (setq make-backup-files nil)
 
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(magit-log-section-commit-count 40))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
