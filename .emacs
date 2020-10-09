@@ -46,6 +46,8 @@
 (straight-use-package 'multiple-cursors)
 (straight-use-package 'paredit)
 (straight-use-package 'dumb-jump)
+(straight-use-package 'jenkinsfile-mode)
+(straight-use-package 'expand-region)
 
 (straight-use-package
  '(guaranteed-emacs :type git :host github :repo "Guaranteed-Rate/guaranteed-emacs"))
@@ -62,12 +64,12 @@
 
 (require 'flycheck-clj-kondo)
 (require 'smooth-scrolling)
+(require 'expand-region)
 
 ;; hooks
 (defun my-clojure-mode-hook ()
   (clj-refactor-mode 1)
   (yas-minor-mode 1)
-  (idle-highlight-mode t)
   (smooth-scrolling-mode 1)
   (paredit-mode t)
   (global-flycheck-mode))
@@ -117,6 +119,7 @@
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key "\M-/" 'hippie-expand)
+(global-set-key (kbd "C-`") 'er/expand-region)
 
 (defun just-no-space ()
   (interactive)
