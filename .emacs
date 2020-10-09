@@ -34,7 +34,7 @@
 (straight-use-package 'smooth-scrolling)
 (straight-use-package 'slime)
 (straight-use-package 'rainbow-delimiters)
-(straight-use-package 'neotree)
+(straight-use-package 'treemacs)
 (straight-use-package 'magit)
 (straight-use-package 'highlight-parentheses)
 (straight-use-package 'helm-projectile)
