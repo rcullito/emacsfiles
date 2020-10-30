@@ -9,7 +9,6 @@ Clone this repository alongside other local projects, i.e.:
 
 Symlink .emacs and .emacs.d to home directory
 
-`ln -s ~/rob/emacs/.emacs .emacs`
 `ln -s ~/rob/emacs/.emacs.d .emacs.d`
 
 Packages that are not already installed will be installed on the first emacs run
