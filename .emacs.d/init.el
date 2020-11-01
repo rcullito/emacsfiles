@@ -29,7 +29,6 @@
 
 (use-package vterm
   :custom (vterm-always-compile-module t)
-  :ensure t
   :bind ("<f6>" . vterm))
 
 ; (use-package guaranteed-emacs
@@ -94,9 +93,8 @@
   :bind   (("<f1>" . mc/mark-next-like-this)
            ("<f2>" . mc/mark-all-like-this)))
 
-
 (use-package which-key
-  :config (which-key-mode))
+  :hook (prog-mode . which-key-mode))
 
 (use-package helm
   :bind ("M-x" . helm-M-x))
@@ -105,30 +103,21 @@
   :bind ("C-c s" . projectile-switch-project))
 
 (use-package helm-projectile
-  :after (helm projectile)
   :bind ("C-c p f" . helm-projectile-find-file))
-
 
 ;; (straight-use-package 'terraform-mode)
 ;; (straight-use-package 'yaml-mode)
-
 ;; (straight-use-package 'slime)
-;; (require 'helm-projectile)
-;; (helm-projectile-on)
 ;; (straight-use-package 'jenkinsfile-mode)
-;; (projectile-mode)
 
 ;; modes
 (global-auto-revert-mode)
 (setq-default indent-tabs-mode nil)
 (menu-bar-mode -1)
-(which-key-mode)
-
 
 ;; ;; themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'zenburn t)
-
 
 ;; fn keys for emacs core
 
