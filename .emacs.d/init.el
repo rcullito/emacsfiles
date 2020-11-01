@@ -27,9 +27,10 @@
 (setq user-full-name "Rob Culliton")
 (setq user-mail-address "rob.culliton@gmail.com")
 
-;; (use-package vterm
-;;   :custom (vterm-always-compile-module t)
-;;   :bind ("<f6>" . vterm))
+(use-package vterm
+  :custom (vterm-always-compile-module t)
+  :ensure t
+  :bind ("<f6>" . vterm))
 
 ; (use-package guaranteed-emacs
 ;  :straight (:host github :repo "Guaranteed-Rate/guaranteed-emacs")
