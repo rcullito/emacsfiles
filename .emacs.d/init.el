@@ -31,9 +31,11 @@
   :custom (vterm-always-compile-module t)
   :bind ("<f6>" . vterm))
 
-; (use-package guaranteed-emacs
-;  :straight (:host github :repo "Guaranteed-Rate/guaranteed-emacs")
-;  :config (set-common-vars) (setenv "PROCESS_QUEUES" "true"))
+(when (getenv "work-laptop")
+  (use-package guaranteed-emacs
+   :ensure t
+   :straight (:host github :repo "Guaranteed-Rate/guaranteed-emacs")
+   :config (set-common-vars) (setenv "PROCESS_QUEUES" "true")))
 
 ;; bind, hook, mode, all imply a defer
 (use-package magit
