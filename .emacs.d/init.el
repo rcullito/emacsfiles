@@ -31,7 +31,7 @@
   :custom (vterm-always-compile-module t)
   :bind ("<f6>" . vterm))
 
-(when (getenv "work-laptop")
+(when (getenv "WORK_LAPTOP")
   (use-package guaranteed-emacs
    :ensure t
    :straight (:host github :repo "Guaranteed-Rate/guaranteed-emacs")
