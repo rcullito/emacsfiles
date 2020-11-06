@@ -43,7 +43,6 @@
            ("C-c g" . magit-file-dispatch))
   :custom (magit-log-section-commit-count 40))
 
-
 (use-package dumb-jump
   :config (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   :custom (dumb-jump-prefer-searcher 'rg))
@@ -145,6 +144,20 @@
 (setq inhibit-splash-screen t
       initial-scratch-message "")
 (setq make-backup-files nil)
+
+(defvar next-buffer-count)
+(setq next-buffer-count 2)
+
+(defun earmuff (var-name)
+  (concat "*" var-name "*"))
+
+(defun new-scratch ()
+  (interactive)
+  (let* ((buffer-num (number-to-string next-buffer-count))
+         (buffer-name (earmuff (concat "scratch-" buffer-num))))
+    (progn
+      (setq next-buffer-count (+ next-buffer-count 1))
+      (switch-to-buffer buffer-name))))
 
 ;; Stop customize from writing to this file
 (setq custom-file (concat user-emacs-directory "custom.el"))
