@@ -159,6 +159,19 @@
       (setq next-buffer-count (+ next-buffer-count 1))
       (switch-to-buffer buffer-name))))
 
+;; TODO make a higher order fn here
+(defun mount ()
+  (interactive)
+  (goto-char (point-max))
+  (insert "(mount.core/start)")
+  (cider-repl-return))
+
+(defun frontend ()
+  (interactive)
+  (goto-char (point-max))
+  (insert "(do (require 'figwheel.main) (figwheel.main/start :dev))")
+  (cider-repl-return))
+
 ;; Stop customize from writing to this file
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
