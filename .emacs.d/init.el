@@ -97,19 +97,36 @@
 (use-package which-key
   :hook (prog-mode . which-key-mode))
 
-(use-package helm
-  :bind ("M-x" . helm-M-x))
 
-(use-package projectile
-  :bind ("C-c s" . projectile-switch-project))
+;; beginning of helm madness
 
-(use-package helm-projectile
-  :bind ("C-c p f" . helm-projectile-find-file))
+(straight-use-package 'projectile)
+(projectile-mode)
+(global-set-key (kbd "C-c s") 'projectile-switch-project)
+(straight-use-package 'helm)
+(straight-use-package 'helm-projectile)
+(require 'helm-projectile)
+(helm-projectile-on)
+(global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
+(global-set-key (kbd "C-c p h") 'helm-projectile)
+(global-set-key (kbd "M-x") 'helm-M-x)
+;; TODO potentially model these modes after which-key mode, prog mode dotted pair
+;; (use-package projectile
+;;   :bind ("C-c s" . projectile-switch-project))
 
-;; (straight-use-package 'terraform-mode)
-;; (straight-use-package 'yaml-mode)
-;; (straight-use-package 'slime)
-;; (straight-use-package 'jenkinsfile-mode)
+;; (use-package helm
+;;   :bind ("M-x" . helm-M-x))
+
+;; (use-package helm-projectile
+;;   :bind ("C-c p f" . helm-projectile-find-file))
+
+;; end of helm madness
+
+
+(straight-use-package 'terraform-mode)
+(straight-use-package 'yaml-mode)
+(straight-use-package 'slime)
+(straight-use-package 'jenkinsfile-mode)
 
 ;; modes
 (global-auto-revert-mode)
