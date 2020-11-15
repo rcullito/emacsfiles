@@ -176,7 +176,6 @@
       (setq next-buffer-count (+ next-buffer-count 1))
       (switch-to-buffer buffer-name))))
 
-;; TODO make a higher order fn here
 (defun mount ()
   (interactive)
   (goto-char (point-max))

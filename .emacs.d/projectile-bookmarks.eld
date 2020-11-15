@@ -1,1 +1,1 @@
-("~/rob/emacs/" "~/rob/turnkey/" "~/rob/ybr-ui/")
+("~/rob/emacs/" "~/rob/ybr-ui/" "~/rob/one-loan-efolder/" "~/rob/turnkey/")
