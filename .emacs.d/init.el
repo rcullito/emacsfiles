@@ -44,8 +44,9 @@
   :custom (magit-log-section-commit-count 40))
 
 (use-package dumb-jump
-  :config (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
-  :custom (dumb-jump-prefer-searcher 'rg))
+  :ensure t
+  :custom (dumb-jump-prefer-searcher 'rg)
+  :config (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (use-package expand-region
   :bind ("C-o" . er/expand-region))
