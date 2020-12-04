@@ -1,1 +1,1 @@
-("~/rob/ybr-ui/" "~/rob/emacs/" "~/rob/turnkey/" "~/rob/" "~/camera-feed-loop/" "~/rob/camera-feed-loop/" "~/rob/one-loan-efolder/" "~/ybr-ui/")
+("~/rob/emacs/" "~/rob/ybr-ui/" "~/rob/turnkey/" "~/rob/" "~/camera-feed-loop/" "~/rob/camera-feed-loop/" "~/rob/one-loan-efolder/" "~/ybr-ui/")
