@@ -129,6 +129,9 @@
 (straight-use-package 'slime)
 (straight-use-package 'jenkinsfile-mode)
 
+(straight-use-package 'clj-refactor)
+(setq cljr-warn-on-eval nil) ;; will create ASTs for all the namespaces at REPL start up if this is set to nil
+
 ;; modes
 (global-auto-revert-mode)
 (setq-default indent-tabs-mode nil)
@@ -158,6 +161,7 @@
 (global-set-key (kbd "C-c l") 'just-no-space)
 (global-set-key (kbd "C-c u") 'delete-indentation)
 (global-set-key "\C-x\C-b" 'buffer-menu)
+(global-set-key (kbd "C-c i") 'indent-region)
 
 (setq inhibit-splash-screen t
       initial-scratch-message "")
