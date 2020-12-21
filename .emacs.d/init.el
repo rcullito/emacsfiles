@@ -193,6 +193,9 @@
   (insert "(do (require 'figwheel.main) (figwheel.main/start :dev))")
   (cider-repl-return))
 
+(define-key cider-repl-mode-map (kbd "<up>") #'cider-repl-backward-input)
+(define-key cider-repl-mode-map (kbd "<down>") #'cider-repl-forward-input)
+
 ;; Stop customize from writing to this file
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
