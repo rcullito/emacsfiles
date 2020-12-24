@@ -60,9 +60,6 @@
   :defer t
   :bind ("<f3>" . clojure-thread-first-all))
 
-(use-package cider
-  :defer t)
-
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
@@ -97,6 +94,12 @@
 
 (use-package which-key
   :hook (prog-mode . which-key-mode))
+
+(use-package cider
+  :defer t
+  :bind (:map cider-repl-mode-map
+              ("<up>" . #'cider-repl-backward-input)
+              ("<down>" . #'cider-repl-forward-input)))
 
 
 ;; beginning of helm madness
@@ -192,9 +195,6 @@
   (goto-char (point-max))
   (insert "(do (require 'figwheel.main) (figwheel.main/start :dev))")
   (cider-repl-return))
-
-(define-key cider-repl-mode-map (kbd "<up>") #'cider-repl-backward-input)
-(define-key cider-repl-mode-map (kbd "<down>") #'cider-repl-forward-input)
 
 ;; Stop customize from writing to this file
 (setq custom-file (concat user-emacs-directory "custom.el"))
