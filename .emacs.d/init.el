@@ -104,6 +104,10 @@
               ("<up>" . #'cider-repl-backward-input)
               ("<down>" . #'cider-repl-forward-input)))
 
+(use-package crux
+  :ensure t
+  :bind ("C-x 4 t" . crux-transpose-windows))
+
 
 ;; beginning of helm madness
 
