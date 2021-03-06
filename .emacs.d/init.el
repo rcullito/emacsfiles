@@ -106,6 +106,7 @@
 
 (use-package crux
   :ensure t
+  :defer t
   :bind (("C-x 4 t" . crux-transpose-windows)
          ("C-c I" . crux-find-user-init-file	)))
 
