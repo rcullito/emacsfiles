@@ -35,7 +35,10 @@
   (use-package guaranteed-emacs
    :ensure t
    :straight (:host github :repo "Guaranteed-Rate/guaranteed-emacs")
-   :config (set-common-vars) (setenv "PROCESS_QUEUES" "true")))
+   :config
+   (set-common-vars)
+   (setenv "PROCESS_QUEUES" "true")
+   (setenv "LOAD_SINGLE_LOAN" "1798d26b-0758-4965-a350-925c6e5dcda1")))
 
 ;; bind, hook, mode, all imply a defer
 (use-package magit

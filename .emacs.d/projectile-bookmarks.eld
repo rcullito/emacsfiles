@@ -1,1 +1,1 @@
-("~/rob/emacs/" "~/rob/turnkey/" "~/rob/ybr-ui/" "~/rob/" "~/camera-feed-loop/" "~/rob/camera-feed-loop/" "~/rob/one-loan-efolder/")
+("~/rob/emacs/" "~/rob/rob-utils/" "~/rob/ybr-ui/" "~/rob/gr-ui-cljs/" "~/rob/one-loan-efolder/" "~/rob/chime/" "~/rob/esp/" "~/rob/util/" "~/rob/faker/" "~/rob/feb-test/" "~/rob/gr-transport-support/" "~/rob/gr-aws-messaging/" "~/rob/instrument/" "~/rob/gr-instrument-server/" "~/rob/turnkey/" "~/rob/" "~/rob/moonlight/" "~/camera-feed-loop/" "~/rob/camera-feed-loop/" "~/rob/dm-client/")
