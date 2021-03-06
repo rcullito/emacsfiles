@@ -106,9 +106,12 @@
 
 (use-package crux
   :ensure t
-  :bind ("C-x 4 t" . crux-transpose-windows))
+  :bind (("C-x 4 t" . crux-transpose-windows)
+         ("C-c I" . crux-find-user-init-file	)))
 
-
+(require 'misc)
+(global-set-key (kbd "<right>") 'forward-to-word)
+(global-set-key (kbd "<left>") 'backward-to-word)
 ;; beginning of helm madness
 
 (straight-use-package 'projectile)
