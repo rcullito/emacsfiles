@@ -113,6 +113,10 @@
 (require 'misc)
 (global-set-key (kbd "<right>") 'forward-to-word)
 (global-set-key (kbd "<left>") 'backward-to-word)
+
+(global-set-key (kbd "<up>") 'backward-paragraph)
+(global-set-key (kbd "<down>") 'forward-paragraph)
+
 ;; beginning of helm madness
 
 (straight-use-package 'projectile)
@@ -157,8 +161,6 @@
 
 ;; fn keys for emacs core
 
-(global-set-key (kbd "<f4>") 'backward-paragraph)
-(global-set-key (kbd "<f5>") 'forward-paragraph)
 (global-set-key (kbd "<f9>") 'display-line-numbers-mode)
 
 ;; ;; Misc
