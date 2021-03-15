@@ -37,8 +37,7 @@
    :straight (:host github :repo "Guaranteed-Rate/guaranteed-emacs")
    :config
    (set-common-vars)
-   (setenv "PROCESS_QUEUES" "true")
-   (setenv "LOAD_SINGLE_LOAN" "1798d26b-0758-4965-a350-925c6e5dcda1")))
+   (setenv "PROCESS_QUEUES" "true")))
 
 ;; bind, hook, mode, all imply a defer
 (use-package magit
@@ -182,6 +181,19 @@
 (setq inhibit-splash-screen t
       initial-scratch-message "")
 (setq make-backup-files nil)
+
+
+(defun single-loan-guid ()
+  (interactive)
+  (let* ((guid "1efe969d-a484-4fca-8866-45421f4193d0")
+         (dashboard-hack-point 3118)
+         (local-dashboard-location "~/rob/ybr-ui/src/cljs/ybr_ui/dashboards/events.cljs")
+         (guid-line (format ":loan-guids [\"%s\"]" guid)))
+    (find-file local-dashboard-location)
+    (goto-char dashboard-hack-point)
+    (insert guid-line)
+    (paredit-newline)
+    (save-buffer)))
 
 (defvar next-buffer-count)
 (setq next-buffer-count 2)
