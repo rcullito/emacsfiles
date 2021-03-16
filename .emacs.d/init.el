@@ -183,7 +183,8 @@
 (setq make-backup-files nil)
 
 
-(defun single-loan-guid ()
+(defun load-single-loan ()
+  "update ybr dashboard to only load single loan"
   (interactive)
   (let* ((guid "1efe969d-a484-4fca-8866-45421f4193d0")
          (dashboard-hack-point 3118)
