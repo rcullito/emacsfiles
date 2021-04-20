@@ -87,6 +87,9 @@
 (use-package markdown-mode
   :defer   t)
 
+(use-package json-mode
+  :defer   t)
+
 (use-package ace-window
   :bind   ("M-o" . ace-window))
 
