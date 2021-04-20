@@ -148,7 +148,9 @@
 (straight-use-package 'yaml-mode)
 (straight-use-package 'slime)
 (straight-use-package 'jenkinsfile-mode)
-(straight-use-package 'restclient)
+
+(use-package restclient
+  :defer   t)
 
 (straight-use-package 'clj-refactor)
 (setq cljr-warn-on-eval nil) ;; will create ASTs for all the namespaces at REPL start up if this is set to nil
