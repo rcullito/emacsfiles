@@ -90,6 +90,9 @@
 (use-package json-mode
   :defer   t)
 
+(use-package git-link
+  :defer t)
+
 (use-package ace-window
   :bind   ("M-o" . ace-window))
 
