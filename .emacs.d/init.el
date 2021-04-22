@@ -121,10 +121,9 @@
 (require 'misc)
 (global-set-key (kbd "<right>") 'forward-to-word)
 (global-set-key (kbd "<left>") 'backward-to-word)
-
 (global-set-key (kbd "<up>") 'backward-paragraph)
 (global-set-key (kbd "<down>") 'forward-paragraph)
-
+(global-set-key "\M-z" 'zap-up-to-char)
 ;; beginning of helm madness
 
 (straight-use-package 'projectile)
