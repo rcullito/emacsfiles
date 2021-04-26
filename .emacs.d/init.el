@@ -212,6 +212,11 @@
     (paredit-newline)
     (save-buffer)))
 
+(defun bb-connect ()
+  "connect to babashka nrepl on the default host and port"
+  (interactive)
+  (cider-connect-clj '(:host "127.0.0.1" :port 1667)))
+
 (defvar next-buffer-count)
 (setq next-buffer-count 2)
 
