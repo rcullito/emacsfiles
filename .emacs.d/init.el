@@ -148,7 +148,7 @@
 
 ;; end of helm madness
 
-
+(straight-use-package 'kubel)
 (straight-use-package 'terraform-mode)
 (straight-use-package 'yaml-mode)
 (straight-use-package 'slime)
