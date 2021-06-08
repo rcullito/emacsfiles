@@ -157,6 +157,9 @@
 (use-package restclient
   :defer   t)
 
+(use-package dockerfile-mode
+  :defer   t)
+
 (straight-use-package 'clj-refactor)
 (setq cljr-warn-on-eval nil) ;; will create ASTs for all the namespaces at REPL start up if this is set to nil
 
