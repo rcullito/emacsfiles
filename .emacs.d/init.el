@@ -45,7 +45,10 @@
   :bind ("C-o" . er/expand-region))
 
 (use-package paredit
-  :hook   ((cider-repl-mode clojure-mode emacs-lisp-mode) . paredit-mode)
+  :hook   ((cider-repl-mode
+            clojure-mode
+            emacs-lisp-mode
+            lisp-mode) . paredit-mode)
   :bind   (("<f7>" . paredit-wrap-square)
            ("<f8>" . paredit-wrap-curly)))
 
