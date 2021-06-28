@@ -27,19 +27,10 @@
 (setq user-full-name "Rob Culliton")
 (setq user-mail-address "rob.culliton@gmail.com")
 
-(use-package vterm
-  :custom (vterm-always-compile-module t)
-  :bind ("<f6>" . vterm))
-
-(when (getenv "WORK_LAPTOP")
-  (use-package guaranteed-emacs
-   :ensure t
-   :straight (:host github :repo "Guaranteed-Rate/guaranteed-emacs")
-   :config
-   (set-common-vars)
-   (setenv "PROCESS_QUEUES" "true")))
 
 ;; bind, hook, mode, all imply a defer
+
+
 (use-package magit
   :bind   (("C-x g" . magit-status)
            ("C-c g" . magit-file-dispatch))
@@ -71,24 +62,9 @@
 (use-package flycheck-clj-kondo
   :after clojure-mode)
 
-
-(use-package smooth-scrolling
-  :hook   (clojure-mode . smooth-scrolling-mode))
-
 (use-package deadgrep
   :bind   ("C-c d" . deadgrep))
 
-(use-package treemacs
-  :defer   t)
-
-(use-package nyan-mode
-  :defer   t)
-
-(use-package markdown-mode
-  :defer   t)
-
-(use-package json-mode
-  :defer   t)
 
 (use-package git-link
   :defer t)
@@ -116,43 +92,11 @@
   :ensure t
   :defer t
   :bind (("C-x 4 t" . crux-transpose-windows)
-         ("C-c I" . crux-find-user-init-file	)))
+         ("C-c I" . crux-find-user-init-file)))
 
-(require 'misc)
-(global-set-key (kbd "<right>") 'forward-to-word)
-(global-set-key (kbd "<left>") 'backward-to-word)
-(global-set-key (kbd "<up>") 'backward-paragraph)
-(global-set-key (kbd "<down>") 'forward-paragraph)
-(global-set-key "\M-z" 'zap-up-to-char)
-;; beginning of helm madness
 
-(straight-use-package 'projectile)
-(projectile-mode)
-(global-set-key (kbd "C-c s") 'projectile-switch-project)
-(straight-use-package 'helm)
-(straight-use-package 'helm-projectile)
-(require 'helm-projectile)
-(helm-projectile-on)
-(global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
-(global-set-key (kbd "C-c p h") 'helm-projectile)
-(global-set-key (kbd "M-x") 'helm-M-x)
-;; TODO potentially model these modes after which-key mode, prog mode dotted pair
-;; (use-package projectile
-;;   :bind ("C-c s" . projectile-switch-project))
-
-;; (use-package helm
-;;   :bind ("M-x" . helm-M-x))
-
-;; (use-package helm-projectile
-;;   :bind ("C-c p f" . helm-projectile-find-file))
-
-;; end of helm madness
-
-(straight-use-package 'kubel)
-(straight-use-package 'terraform-mode)
-(straight-use-package 'yaml-mode)
-(straight-use-package 'slime)
-(straight-use-package 'jenkinsfile-mode)
+(use-package slime
+  :defer t)
 
 (use-package restclient
   :defer   t)
@@ -186,6 +130,14 @@
   (setq current-prefix-arg '(0)) ; C-u
   (call-interactively 'just-one-space))
 
+
+(require 'misc)
+(global-set-key (kbd "<right>") 'forward-to-word)
+(global-set-key (kbd "<left>") 'backward-to-word)
+(global-set-key (kbd "<up>") 'backward-paragraph)
+(global-set-key (kbd "<down>") 'forward-paragraph)
+(global-set-key "\M-z" 'zap-up-to-char)
+
 (global-set-key (kbd "C--") 'undo)
 (global-set-key (kbd "C-c l") 'just-no-space)
 (global-set-key (kbd "C-c u") 'delete-indentation)
@@ -196,29 +148,8 @@
       initial-scratch-message "")
 (setq make-backup-files nil)
 
-
-(transient-mark-mode 1) ;; Transient Mark mode gives you much of the standard selection-highlighting behavior of other editors. In GNU Emacs 23 and onwards, it is enabled by default.
 (require 'org)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-
-
-(defun load-single-loan ()
-  "update ybr dashboard to only load single loan"
-  (interactive)
-  (let* ((guid "1798d26b-0758-4965-a350-925c6e5dcda1")
-         (dashboard-hack-point 3118)
-         (local-dashboard-location "~/rob/ybr-ui/src/cljs/ybr_ui/dashboards/events.cljs")
-         (guid-line (format ":loan-guids [\"%s\"]" guid)))
-    (find-file local-dashboard-location)
-    (goto-char dashboard-hack-point)
-    (insert guid-line)
-    (paredit-newline)
-    (save-buffer)))
-
-(defun bb-connect ()
-  "connect to babashka nrepl on the default host and port"
-  (interactive)
-  (cider-connect-clj '(:host "127.0.0.1" :port 1667)))
 
 (defvar next-buffer-count)
 (setq next-buffer-count 2)
@@ -234,17 +165,6 @@
       (setq next-buffer-count (+ next-buffer-count 1))
       (switch-to-buffer buffer-name))))
 
-(defun mount ()
-  (interactive)
-  (goto-char (point-max))
-  (insert "(mount.core/start)")
-  (cider-repl-return))
-
-(defun frontend ()
-  (interactive)
-  (goto-char (point-max))
-  (insert "(do (require 'figwheel.main) (figwheel.main/start :dev))")
-  (cider-repl-return))
 
 ;; Stop customize from writing to this file
 (setq custom-file (concat user-emacs-directory "custom.el"))
