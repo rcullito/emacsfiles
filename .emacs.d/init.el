@@ -48,7 +48,8 @@
   :hook   ((cider-repl-mode
             clojure-mode
             emacs-lisp-mode
-            lisp-mode) . paredit-mode)
+            lisp-mode
+            slime-repl-mode) . paredit-mode)
   :bind   (("<f7>" . paredit-wrap-square)
            ("<f8>" . paredit-wrap-curly)))
 
@@ -167,6 +168,9 @@
     (progn
       (setq next-buffer-count (+ next-buffer-count 1))
       (switch-to-buffer buffer-name))))
+
+
+(setq inferior-lisp-program "clisp")
 
 
 ;; Stop customize from writing to this file
