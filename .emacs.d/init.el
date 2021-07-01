@@ -122,7 +122,7 @@
 
 ;; fn keys for emacs core
 
-(global-set-key (kbd "<f9>") 'display-line-numbers-mode)
+(global-set-key (kbd "<f9>") 'global-linum-mode)
 
 ;; ;; Misc
 (global-prettify-symbols-mode 1)
