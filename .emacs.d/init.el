@@ -3,6 +3,10 @@
 
 ;;; Code:
 
+
+(require 'org)
+(require 'misc)
+
 (defmacro load-local (file-name)
   `(load (concat user-emacs-directory ,file-name)))
 
@@ -101,27 +105,16 @@
 
 ;; fn keys for emacs core
 
-(global-set-key (kbd "<f9>") 'global-linum-mode)
-
 ;; ;; Misc
 (global-prettify-symbols-mode 1)
 (put 'narrow-to-region 'disabled nil)
-
-(require 'misc)
-(global-set-key (kbd "<right>") 'forward-to-word)
-(global-set-key (kbd "<left>") 'backward-to-word)
-(global-set-key (kbd "<up>") 'backward-paragraph)
-(global-set-key (kbd "<down>") 'forward-paragraph)
-(global-set-key "\M-z" 'zap-up-to-char)
 
 (setq inhibit-splash-screen t
       initial-scratch-message "")
 (setq make-backup-files nil)
 
-(require 'org)
+
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-
-
 
 (setq inferior-lisp-program "clisp")
 
