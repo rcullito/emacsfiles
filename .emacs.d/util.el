@@ -18,26 +18,9 @@
   (call-interactively 'just-one-space))
 
 
-
-(setq emacs-core-keybindings
-  '(("C--" . 'undo)
-    ("C-c l" . 'just-no-space)
-    ("C-c u" . 'delete-indentation)
-    ("\C-x\C-b" . 'buffer-menu)
-    ("C-c i" . 'indent-region)
-    ("<right>" . 'forward-to-word)
-    ("<left>" . 'backward-to-word)
-    ("<up>" . 'backward-paragraph)
-    ("<down>" . 'forward-paragraph)
-    ("\M-z" . 'zap-up-to-char)
-    ("<f9>" . 'global-linum-mode)))
-
-
-(defmacro set-key-pairs ()
-  `(progn ,@(mapcar
-             (lambda (pair)
-               `(global-set-key (kbd ,(car pair)) ,(cdr pair)))
-             emacs-core-keybindings)))
-
-
-(set-key-pairs)
+(defmacro emacs-core-keybindings (bindings)
+  (let ((g (cl-gensym)))
+    `(mapc
+      (lambda (,g)
+        (global-set-key (kbd (car ,g)) (cdr ,g)))
+      ,bindings)))

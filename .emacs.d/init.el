@@ -13,6 +13,19 @@
 (load-local "bootstrap.el")
 (load-local "util.el")
 
+(emacs-core-keybindings
+ '(("C--" . undo)
+   ("C-c l" . just-no-space)
+   ("C-c u" . delete-indentation)
+   ("\C-x\C-b" . buffer-menu)
+   ("C-c i" . indent-region)
+   ("<right>" . forward-to-word)
+   ("<left>" . backward-to-word)
+   ("<up>" . backward-paragraph)
+   ("<down>" . forward-paragraph)
+   ("\M-z" . zap-up-to-char)
+   ("<f9>" . global-linum-mode)))
+
 
 (use-package magit
   :bind   (("C-x g" . magit-status)
