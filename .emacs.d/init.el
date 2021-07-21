@@ -3,32 +3,11 @@
 
 ;;; Code:
 
-(defvar straight-vc-git-default-protocol)
-(setq straight-vc-git-default-protocol 'ssh)
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 5))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
+(defmacro load-local (file-name)
+  `(load (concat user-emacs-directory ,file-name)))
 
-;;;;  Effectively replace use-package with straight-use-package
-;;; https://github.com/raxod502/straight.el/blob/develop/README.md#integration-with-use-package
-(straight-use-package 'use-package)
-(defvar straight-use-package-by-default)
-(setq straight-use-package-by-default t)
-
-(setq user-full-name "Rob Culliton")
-(setq user-mail-address "rob.culliton@gmail.com")
-
-
-;; bind, hook, mode, all imply a defer
+(load-local "bootstrap.el")
+(load-local "util.el")
 
 
 (use-package magit
@@ -128,25 +107,12 @@
 (global-prettify-symbols-mode 1)
 (put 'narrow-to-region 'disabled nil)
 
-
-(defun just-no-space ()
-  (interactive)
-  (setq current-prefix-arg '(0)) ; C-u
-  (call-interactively 'just-one-space))
-
-
 (require 'misc)
 (global-set-key (kbd "<right>") 'forward-to-word)
 (global-set-key (kbd "<left>") 'backward-to-word)
 (global-set-key (kbd "<up>") 'backward-paragraph)
 (global-set-key (kbd "<down>") 'forward-paragraph)
 (global-set-key "\M-z" 'zap-up-to-char)
-
-(global-set-key (kbd "C--") 'undo)
-(global-set-key (kbd "C-c l") 'just-no-space)
-(global-set-key (kbd "C-c u") 'delete-indentation)
-(global-set-key "\C-x\C-b" 'buffer-menu)
-(global-set-key (kbd "C-c i") 'indent-region)
 
 (setq inhibit-splash-screen t
       initial-scratch-message "")
@@ -155,27 +121,12 @@
 (require 'org)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
-(defvar next-buffer-count)
-(setq next-buffer-count 2)
-
-(defun earmuff (var-name)
-  (concat "*" var-name "*"))
-
-(defun new-scratch ()
-  (interactive)
-  (let* ((buffer-num (number-to-string next-buffer-count))
-         (buffer-name (earmuff (concat "scratch-" buffer-num))))
-    (progn
-      (setq next-buffer-count (+ next-buffer-count 1))
-      (switch-to-buffer buffer-name))))
 
 
 (setq inferior-lisp-program "clisp")
 
 
 ;; Stop customize from writing to this file
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(load custom-file 'noerror)
  
 (provide 'init)
 
