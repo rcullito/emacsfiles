@@ -18,9 +18,8 @@
   (call-interactively 'just-one-space))
 
 
-(defmacro emacs-core-keybindings (bindings)
-  (let ((g (cl-gensym)))
-    `(mapc
-      (lambda (,g)
-        (global-set-key (kbd (car ,g)) (cdr ,g)))
-      ,bindings)))
+(defun emacs-core-keybindings (bindings)
+  (mapc
+   (lambda (x)
+     (global-set-key (kbd (car x)) (cdr x)))
+   bindings))
