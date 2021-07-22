@@ -135,7 +135,7 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
 (setq inferior-lisp-program "clisp")
-
+(setq org-html-postamble nil)
 
 ;; Stop customize from writing to this file
  
