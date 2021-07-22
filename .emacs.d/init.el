@@ -7,8 +7,9 @@
 (require 'org)
 (require 'misc)
 
-(defmacro load-local (file-name)
-  `(load (concat user-emacs-directory ,file-name)))
+(defun load-local (file-name)
+  (load (concat user-emacs-directory
+                file-name)))
 
 (load-local "bootstrap.el")
 (load-local "util.el")
