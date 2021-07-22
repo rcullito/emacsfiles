@@ -28,6 +28,10 @@
    ("<f9>" . global-linum-mode)))
 
 
+(use-package smex
+  :ensure t
+  :bind ("M-x" . smex))
+
 (use-package magit
   :bind   (("C-x g" . magit-status)
            ("C-c g" . magit-file-dispatch))
