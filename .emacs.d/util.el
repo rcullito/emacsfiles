@@ -1,16 +1,11 @@
-(defvar next-buffer-count 2)
+(setq lexical-binding t)
 
-(defun earmuff (var-name)
-  (concat "*" var-name "*"))
-
-(defun new-scratch ()
-  (interactive)
-  (let* ((buffer-num (number-to-string next-buffer-count))
-         (buffer-name (earmuff (concat "scratch-" buffer-num))))
-    (progn
-      (setq next-buffer-count (+ next-buffer-count 1))
-      (switch-to-buffer buffer-name))))
-
+(let ((next-buffer-count 2))
+  (defun new-scratch ()
+   (interactive)
+   (let ((buffer-name (format "*scratch-%d*" next-buffer-count)))
+     (cl-incf next-buffer-count)
+     (switch-to-buffer buffer-name))))
 
 (defun just-no-space ()
   (interactive)
