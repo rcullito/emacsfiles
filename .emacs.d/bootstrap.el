@@ -23,8 +23,8 @@
 
 ;; end of straight 
 
-(setq user-full-name "Rob Culliton")
-(setq user-mail-address "rob.culliton@gmail.com")
+(setq user-full-name "Rob Culliton"
+      user-mail-address "rob.culliton@gmail.com")
 
 
 
