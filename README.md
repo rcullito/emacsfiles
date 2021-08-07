@@ -4,7 +4,7 @@
 Take as much or as little as you like. Suggestions welcome. 
 
 
-## What's Here?
+## What Is Here?
 
   - straight.el and use-package for a sane package story
   - modified zenburn theme to get rid of all the red for colors easier on the eyes
