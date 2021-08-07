@@ -70,7 +70,6 @@
 (use-package deadgrep
   :bind   ("C-c d" . deadgrep))
 
-
 (use-package git-link
   :defer t)
 
