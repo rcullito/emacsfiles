@@ -109,36 +109,34 @@
 
 (straight-use-package 'clj-refactor)
 
+
+;; beginning of assignment
+;; setq-default will apply to all buffers
 (setq-default indent-tabs-mode nil)
-;; (setq org-html-postamble nil)
 
 ;;cljr-warn-on-eval  will create ASTs for all the namespaces at REPL start up if this is set to nil
-(nilf cljr-warn-on-eval make-backup-files)
+(nilf cljr-warn-on-eval make-backup-files org-html-postamble)
+
+(setq inhibit-splash-screen t
+      initial-scratch-message ""
+      inferior-lisp-program "clisp")
+
+;; end of assignment
 
 ;; modes
 (global-auto-revert-mode)
-
 (menu-bar-mode -1)
 
 ;; ;; themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'zenburn t)
 
-;; fn keys for emacs core
 
 ;; ;; Misc
 (global-prettify-symbols-mode 1)
 (put 'narrow-to-region 'disabled nil)
 
-(setq inhibit-splash-screen t
-      initial-scratch-message "")
-
-
-
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-
-(setq inferior-lisp-program "clisp")
-
 
 ;; Stop customize from writing to this file
  
