@@ -113,9 +113,8 @@
 (setq-default indent-tabs-mode nil)
 ;; (setq org-html-postamble nil)
 
-(setq cljr-warn-on-eval nil ;; will create ASTs for all the namespaces at REPL start up if this is set to nil
-      make-backup-files nil)
-
+;;cljr-warn-on-eval  will create ASTs for all the namespaces at REPL start up if this is set to nil
+(nilf cljr-warn-on-eval make-backup-files)
 
 ;; modes
 (global-auto-revert-mode)

@@ -18,3 +18,14 @@
    (lambda (x)
      (global-set-key (kbd (car x)) (cdr x)))
    bindings))
+
+;; On Lisp, Paul Graham pg 169, Generalized Variables
+;; adapted slightly for emacs lisp and without additional with-genysms macro
+(defmacro allf (val &rest args)
+  (let ((gval (cl-gensym)))
+    `(let ((,gval ,val))
+       (setf ,@(cl-mapcan #'(lambda (a) (list a gval))
+                          args)))))
+
+(defmacro nilf (&rest args) `(allf nil ,@args))
+
