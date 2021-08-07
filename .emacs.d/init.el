@@ -99,7 +99,6 @@
   :bind (("C-x 4 t" . crux-transpose-windows)
          ("C-c I" . crux-find-user-init-file)))
 
-
 (use-package slime
   :defer t)
 
@@ -110,11 +109,17 @@
   :defer   t)
 
 (straight-use-package 'clj-refactor)
-(setq cljr-warn-on-eval nil) ;; will create ASTs for all the namespaces at REPL start up if this is set to nil
+
+(setq-default indent-tabs-mode nil)
+;; (setq org-html-postamble nil)
+
+(setq cljr-warn-on-eval nil ;; will create ASTs for all the namespaces at REPL start up if this is set to nil
+      make-backup-files nil)
+
 
 ;; modes
 (global-auto-revert-mode)
-(setq-default indent-tabs-mode nil)
+
 (menu-bar-mode -1)
 
 ;; ;; themes
@@ -129,13 +134,13 @@
 
 (setq inhibit-splash-screen t
       initial-scratch-message "")
-(setq make-backup-files nil)
+
 
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
 (setq inferior-lisp-program "clisp")
-(setq org-html-postamble nil)
+
 
 ;; Stop customize from writing to this file
  
