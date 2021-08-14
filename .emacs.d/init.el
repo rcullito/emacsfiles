@@ -28,83 +28,84 @@
    ("<f9>" . global-linum-mode)))
 
 
-(use-package smex
+(up smex
   :ensure t
   :bind ("M-x" . smex))
 
-(use-package magit
+(up magit
   :bind   (("C-x g" . magit-status)
            ("C-c g" . magit-file-dispatch))
   :custom (magit-log-section-commit-count 40))
 
-(use-package dumb-jump
+(up dumb-jump
   :ensure t
   :custom (dumb-jump-prefer-searcher 'rg)
   :config (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
-(use-package expand-region
+(up expand-region
   :bind ("C-o" . er/expand-region))
 
-(use-package paredit
+(up paredit
   :hook   ((cider-repl-mode
             clojure-mode
             emacs-lisp-mode
             lisp-mode
-            slime-repl-mode) . paredit-mode)
+            slime-repl-mode
+            scheme-mode) . paredit-mode)
   :bind   (("<f7>" . paredit-wrap-square)
            ("<f8>" . paredit-wrap-curly)))
 
-(use-package clojure-mode
+(up clojure-mode
   :defer t
   :bind ("<f3>" . clojure-thread-first-all))
 
-(use-package rainbow-delimiters
+(up rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package flycheck
+(up flycheck
   :hook   (clojure-mode . flycheck-mode))
 
-(use-package flycheck-clj-kondo
+(up flycheck-clj-kondo
   :after clojure-mode)
 
-(use-package deadgrep
+(up deadgrep
   :bind   ("C-c d" . deadgrep))
 
-(use-package git-link
+(up git-link
   :defer t)
 
-(use-package ace-window
+(up ace-window
   :bind   ("M-o" . ace-window))
 
-(use-package company
+(up company
   :hook  ((prog-mode cider-repl-mode) . company-mode))
 
-(use-package multiple-cursors
+(up multiple-cursors
   :bind   (("<f1>" . mc/mark-next-like-this)
            ("<f2>" . mc/mark-all-like-this)))
 
-(use-package which-key
+(up which-key
   :hook (prog-mode . which-key-mode))
 
-(use-package cider
+(up cider
   :defer t
   :bind (:map cider-repl-mode-map
               ("<up>" . #'cider-repl-backward-input)
               ("<down>" . #'cider-repl-forward-input)))
 
-(use-package crux
+(up crux
   :ensure t
   :defer t
   :bind (("C-x 4 t" . crux-transpose-windows)
          ("C-c I" . crux-find-user-init-file)))
 
-(use-package slime
+(up slime
   :defer t)
 
-(use-package restclient
+(up restclient
   :defer   t)
 
-(use-package dockerfile-mode
+(up dockerfile-mode
   :defer   t)
 
 (straight-use-package 'clj-refactor)

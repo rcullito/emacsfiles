@@ -29,3 +29,10 @@
 
 (defmacro nilf (&rest args) `(allf nil ,@args))
 
+
+
+(defmacro abbrev (short long)
+  `(defmacro ,short (&rest args)
+     `(,',long ,@args)))
+
+(abbrev up use-package)
