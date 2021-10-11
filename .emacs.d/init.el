@@ -63,7 +63,7 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (up flycheck
-  :hook   (clojure-mode . flycheck-mode))
+  :hook   ((clojure-mode web-mode) . flycheck-mode))
 
 (up flycheck-clj-kondo
   :after clojure-mode)
@@ -106,9 +106,42 @@
   :defer   t)
 
 (up dockerfile-mode
-  :defer   t)
+    :defer   t)
+
+(up treemacs
+    :defer t)
+
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
+
+(straight-use-package 'web-mode)
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
+
 
 (straight-use-package 'clj-refactor)
+
+(straight-use-package 'projectile)
+(projectile-mode)
+(global-set-key (kbd "C-c s") 'projectile-switch-project)
+(straight-use-package 'helm)
+(straight-use-package 'helm-projectile)
+;; (require 'helm-projectile)
+(helm-projectile-on)
+(global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
+(global-set-key (kbd "C-c p h") 'helm-projectile)
+(global-set-key (kbd "M-x") 'helm-M-x)
+
+
 
 
 ;; beginning of assignment
