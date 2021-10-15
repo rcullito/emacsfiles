@@ -98,8 +98,8 @@
 (up crux
     :ensure t
     :defer t
-  :bind (("C-x 4 t" . crux-transpose-windows)
-         ("C-c I" . crux-find-user-init-file)))
+    :bind (("C-x 4 t" . crux-transpose-windows)
+           ("C-c I" . crux-find-user-init-file)))
 
 (up slime
   :defer t)
@@ -135,45 +135,19 @@
   :ensure t)
 
 (up web-mode
- :ensure t
- :bind (:map web-mode-map ("TAB" . #'typescript-indent-line))
- :config (electric-indent-mode -1))
+    :init (progn 
+            (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+            (setq typescript-indent-level 2))
+    :ensure t
+    :bind (:map web-mode-map ("TAB" . #'typescript-indent-line))
+    :config (electric-indent-mode -1))
 
 (use-package tide
   :ensure t
-  :after (typescript-mode company flycheck)
+  :after (typescript-mode company flycheck eldoc)
   :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save)))
-
-(use-package tide
-  :ensure t)
-
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  (company-mode +1))
-
-(setq company-tooltip-align-annotations t)
-
-;; formats the buffer before saving
-
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-
-(straight-use-package 'web-mode)
-
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-(add-hook 'web-mode-hook
-          (lambda ()
-
-            (electric-indent-mode -1) ;; rc edit, 10.13.21
-            (when (string-equal "tsx" (file-name-extension buffer-file-name))
-              (setup-tide-mode))))
+         (web-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)))
 
 (flycheck-add-mode 'typescript-tslint 'web-mode)
 ;; end of typescript
