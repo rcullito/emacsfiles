@@ -1246,7 +1246,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(web-mode-doctype-face ((t (:inherit ,font-lock-comment-face))))
    `(web-mode-folded-face ((t (:underline t))))
    `(web-mode-function-name-face ((t (:foreground ,zenburn-blue))))
-   `(web-mode-html-attr-name-face ((t (:foreground ,zenburn-orange))))
+   `(web-mode-html-attr-name-face ((t (:foreground ,zenburn-green+4))))
    `(web-mode-html-attr-value-face ((t (:inherit ,font-lock-string-face))))
    `(web-mode-html-tag-face ((t (:foreground ,zenburn-cyan))))
    `(web-mode-keyword-face ((t (:inherit ,font-lock-keyword-face))))
