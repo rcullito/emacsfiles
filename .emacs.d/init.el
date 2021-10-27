@@ -24,7 +24,8 @@
    ("<left>" . backward-to-word)
    ("<up>" . backward-paragraph)
    ("<down>" . forward-paragraph)
-   ("\M-z" . zap-up-to-char)
+   ("M-a" . zap-up-to-char)
+   ("M-p" . hippie-expand)
    ("<f9>" . global-linum-mode)))
 
 
