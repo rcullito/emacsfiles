@@ -52,8 +52,7 @@
             emacs-lisp-mode
             lisp-mode
             slime-repl-mode
-            scheme-mode
-            web-mode) . paredit-mode)
+            scheme-mode) . paredit-mode)
   :bind   (("<f7>" . paredit-wrap-square)
            ("<f8>" . paredit-wrap-curly)))
 
@@ -128,33 +127,8 @@
 (global-set-key (kbd "C-c p h") 'helm-projectile)
 (global-set-key (kbd "M-x") 'helm-M-x)
 
-;; beginning of typescript
 
-(require 'flycheck)
-
-(use-package typescript-mode
-  :ensure t)
-
-(up web-mode
-    :init (progn 
-            (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-            (setq typescript-indent-level 2))
-    :ensure t
-    :bind (:map web-mode-map ("TAB" . #'typescript-indent-line))
-    :config (electric-indent-mode -1))
-
-(use-package tide
-  :ensure t
-  :after (typescript-mode company flycheck eldoc)
-  :hook ((typescript-mode . tide-setup)
-         (web-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)))
-
-(flycheck-add-mode 'typescript-tslint 'web-mode)
-;; end of typescript
-
-
-
+(load-local "typescript.el")
 
 ;; beginning of assignment
 ;; setq-default will apply to all buffers
