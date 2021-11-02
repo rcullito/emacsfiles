@@ -34,7 +34,7 @@
 (deftheme zenburn "The Zenburn color theme")
 
 ;; because RC is getting on in years
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 150)
 
 ;;; Color Palette
 
