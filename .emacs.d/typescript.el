@@ -20,7 +20,6 @@
 
 (flycheck-add-mode 'typescript-tslint 'web-mode)
 
-;; TODO set a flag for enabled, disabled
 (defun eslint-disable ()
   "disable eslint for the current file"
   (interactive)
