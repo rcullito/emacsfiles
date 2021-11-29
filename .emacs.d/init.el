@@ -28,6 +28,13 @@
    ("M-p" . hippie-expand)
    ("<f9>" . global-linum-mode)))
 
+(use-package guaranteed-emacs
+  :ensure t
+  :straight (:host github :repo "Guaranteed-Rate/guaranteed-emacs")
+  :config
+  (set-common-vars)
+  (setenv "PROCESS_QUEUES" "true"))
+
 
 (up smex
   :ensure t
