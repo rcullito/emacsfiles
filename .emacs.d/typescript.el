@@ -18,6 +18,11 @@
          (web-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)))
 
+(use-package apheleia
+  :straight (apheleia :host github :repo "raxod502/apheleia")
+  :config
+  (apheleia-global-mode t))
+
 (flycheck-add-mode 'typescript-tslint 'web-mode)
 
 (defun eslint-disable ()
