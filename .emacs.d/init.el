@@ -32,8 +32,7 @@
   :ensure t
   :straight (:host github :repo "Guaranteed-Rate/guaranteed-emacs")
   :config
-  (set-common-vars)
-  (setenv "PROCESS_QUEUES" "true"))
+  (set-common-vars))
 
 
 (up smex
@@ -137,6 +136,22 @@
 
 (load-local "typescript.el")
 
+(straight-use-package 'lsp-mode)
+(straight-use-package 'lsp-treemacs)
+(add-hook 'clojure-mode-hook 'lsp)
+
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024)
+      treemacs-space-between-root-nodes nil
+      company-minimum-prefix-length 1
+      lsp-lens-enable t
+      lsp-signature-auto-activate nil
+      ; lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
+      ; lsp-enable-completion-at-point nil ; uncomment to use cider completion instead of lsp
+      )
+
+(setq lsp-clojure-custom-server-command '("bash" "-c" "/usr/local/bin/clojure-lsp"))
+
 ;; beginning of assignment
 ;; setq-default will apply to all buffers
 (setq-default indent-tabs-mode nil)
@@ -176,12 +191,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((eval when
+   '((cider-preferred-build-tool . lein)
+     (eval when
            (require 'rainbow-mode nil t)
            (rainbow-mode 1))
      (eval setenv "DEV_QUIET_REPL" "1")
      (cider-figwheel-main-default-options . "dev")
-     (cider-default-cljs-repl . figwheel-main))))
+     (cider-default-cljs-repl . figwheel-main)))
+ '(warning-suppress-log-types '((comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
