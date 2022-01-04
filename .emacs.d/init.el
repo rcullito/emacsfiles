@@ -119,6 +119,8 @@
 (up treemacs
     :defer t)
 
+(up lua-mode)
+
 
 (straight-use-package 'clj-refactor)
 
