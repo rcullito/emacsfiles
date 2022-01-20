@@ -3,6 +3,7 @@
 1. be able to center the narrowed region, currently it is stuck at the top of the buffer
 2. add font locking to deadgrep search results
 3. prevent typescript indentation from affecting other modes
+4. prompt to save scratch buffer it is not empty on closing emacs
 
 ## Help
 Packages that are not already installed will be installed on the first emacs run by straight
