@@ -3,6 +3,9 @@
 (use-package typescript-mode
   :ensure t)
 
+
+(use-package add-node-modules-path)
+
 (use-package web-mode
     :init (progn
             (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
@@ -16,19 +19,19 @@
   :after (typescript-mode company flycheck eldoc)
   :hook ((typescript-mode . tide-setup)
          (web-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)))
+         (web-mode . add-node-modules-path)
+         (typescript-mode . tide-hl-identifier-mode))
+  :config (flycheck-add-next-checker 'tsx-tide 'javascript-eslint))
+
+
 
 (use-package apheleia
   :straight (apheleia :host github :repo "raxod502/apheleia")
   :config
   (apheleia-global-mode t))
 
+;; (add-hook 'web-mode-hook #'add-node-modules-path)
 (flycheck-add-mode 'typescript-tslint 'web-mode)
+(flycheck-add-mode 'javascript-eslint 'web-mode)
 
-(defun eslint-disable ()
-  "disable eslint for the current file"
-  (interactive)
-  (goto-char 0)
-  (insert "/* eslint-disable */")
-  (paredit-newline)
-  (save-buffer))
+

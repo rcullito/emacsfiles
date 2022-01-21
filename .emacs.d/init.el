@@ -121,6 +121,7 @@
 
 (up lua-mode)
 
+(up sibilant-mode)
 
 (straight-use-package 'clj-refactor)
 
@@ -136,8 +137,8 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 
 
-;; (load-local "typescript.el")
-(load-local "lsp.el")
+(load-local "typescript.el")
+;; (load-local "lsp.el")
 
 ;; beginning of assignment
 ;; setq-default will apply to all buffers
@@ -177,6 +178,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ignored-local-variable-values '((cider-preferred-build-tool . babashka)))
  '(safe-local-variable-values
    '((cider-preferred-build-tool . lein)
      (eval when
