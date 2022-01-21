@@ -71,7 +71,7 @@
 
 (up flycheck
     :ensure t
-    :hook   ((clojure-mode web-mode) . flycheck-mode))
+    :hook   ((clojure-mode web-mode typescript-mode) . flycheck-mode))
 
 (up flycheck-clj-kondo
   :after clojure-mode)
