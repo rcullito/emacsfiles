@@ -36,7 +36,6 @@
 
 
 (up smex
-  :ensure t
   :bind ("M-x" . smex))
 
 (up magit
@@ -45,7 +44,6 @@
   :custom (magit-log-section-commit-count 40))
 
 (up dumb-jump
-  :ensure t
   :custom (dumb-jump-prefer-searcher 'rg)
   :config (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
@@ -102,7 +100,6 @@
               ("<down>" . #'cider-repl-forward-input)))
 
 (up crux
-    :ensure t
     :defer t
     :bind (("C-x 4 t" . crux-transpose-windows)
            ("C-c I" . crux-find-user-init-file)))
