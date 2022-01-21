@@ -69,7 +69,8 @@
 
 (up flycheck
     :ensure t
-    :hook   ((clojure-mode web-mode typescript-mode) . flycheck-mode))
+    :hook   ((clojure-mode web-mode typescript-mode) . flycheck-mode)
+    :config (setq flycheck-javascript-eslint-executable "eslint_d"))
 
 (up flycheck-clj-kondo
   :after clojure-mode)
