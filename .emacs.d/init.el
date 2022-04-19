@@ -3,16 +3,21 @@
 
 ;;; Code:
 
+(setq user-full-name "Rob Culliton"
+      user-mail-address "rob.culliton@gmail.com")
 
-(require 'org)
 (require 'misc)
 
 (defun load-local (file-name)
   (load (concat user-emacs-directory
                 file-name)))
 
-(load-local "bootstrap.el")
 (load-local "util.el")
+(load-local "bootstrap.el")
+(load-local "guaranteed-emacs.el")
+(set-common-vars)
+(gri-dev)
+
 
 (emacs-core-keybindings
  '(("C--" . undo)
@@ -28,15 +33,18 @@
    ("M-p" . hippie-expand)
    ("<f9>" . global-linum-mode)))
 
-(use-package guaranteed-emacs
-  :ensure t
-  :straight (:host github :repo "Guaranteed-Rate/guaranteed-emacs")
-  :config
-  (set-common-vars))
 
+(defun mount ()
+  (interactive)
+  (goto-char (point-max))
+  (insert "(mount.core/start)")
+  (cider-repl-return))
 
-(up smex
-  :bind ("M-x" . smex))
+(defun frontend ()
+  (interactive)
+  (goto-char (point-max))
+  (insert "(do (require 'figwheel.main) (figwheel.main/start :dev))")
+  (cider-repl-return))
 
 (up magit
   :bind   (("C-x g" . magit-status)
@@ -68,7 +76,6 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (up flycheck
-    :ensure t
     :hook   ((clojure-mode web-mode typescript-mode) . flycheck-mode)
     :config (setq flycheck-javascript-eslint-executable "eslint_d"))
 
@@ -121,13 +128,13 @@
 
 (up sibilant-mode)
 
-(straight-use-package 'clj-refactor)
+(up clj-refactor)
 
-(straight-use-package 'projectile)
+(up projectile)
 (projectile-mode)
 (global-set-key (kbd "C-c s") 'projectile-switch-project)
-(straight-use-package 'helm)
-(straight-use-package 'helm-projectile)
+(up helm)
+(up helm-projectile)
 ;; (require 'helm-projectile)
 (helm-projectile-on)
 (global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
@@ -135,7 +142,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 
 
-(load-local "typescript.el")
+;; (load-local "typescript.el")
 ;; (load-local "lsp.el")
 
 ;; beginning of assignment
@@ -176,16 +183,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ignored-local-variable-values '((cider-preferred-build-tool . babashka)))
+ '(package-selected-packages
+   (quote
+    (vterm helm-projectile helm projectile clj-refactor which-key use-package treemacs slime sibilant-mode restclient rainbow-delimiters paredit multiple-cursors magit lua-mode kubernetes git-link flycheck-clj-kondo expand-region dumb-jump dockerfile-mode deadgrep crux company cider)))
  '(safe-local-variable-values
-   '((cider-preferred-build-tool . lein)
-     (eval when
-           (require 'rainbow-mode nil t)
-           (rainbow-mode 1))
-     (eval setenv "DEV_QUIET_REPL" "1")
-     (cider-figwheel-main-default-options . "dev")
-     (cider-default-cljs-repl . figwheel-main)))
- '(warning-suppress-log-types '((comp))))
+   (quote
+    ((cider-test-default-exclude-selectors "integration")
+     (eval setenv "DEV_QUIET_REPL" "1")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
