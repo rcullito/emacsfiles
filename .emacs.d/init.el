@@ -14,10 +14,6 @@
 
 (load-local "util.el")
 (load-local "bootstrap.el")
-(load-local "guaranteed-emacs.el")
-(set-common-vars)
-(gri-dev)
-
 
 (emacs-core-keybindings
  '(("C--" . undo)
@@ -184,12 +180,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (vterm helm-projectile helm projectile clj-refactor which-key use-package treemacs slime sibilant-mode restclient rainbow-delimiters paredit multiple-cursors magit lua-mode kubernetes git-link flycheck-clj-kondo expand-region dumb-jump dockerfile-mode deadgrep crux company cider)))
+   '(vterm helm-projectile helm projectile clj-refactor which-key use-package treemacs slime sibilant-mode restclient rainbow-delimiters paredit multiple-cursors magit lua-mode kubernetes git-link flycheck-clj-kondo expand-region dumb-jump dockerfile-mode deadgrep crux company cider))
  '(safe-local-variable-values
-   (quote
-    ((cider-test-default-exclude-selectors "integration")
-     (eval setenv "DEV_QUIET_REPL" "1")))))
+   '((cider-test-default-exclude-selectors "integration")
+     (eval setenv "DEV_QUIET_REPL" "1"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
