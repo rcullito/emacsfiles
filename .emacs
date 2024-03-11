@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(deadgrep helm-projectile async helm multiple-cursors ace-window expand-region projectile paredit magit cider)))
+   '(lsp-mode helm-rg company company-mode helm-projectile async helm multiple-cursors ace-window expand-region projectile paredit magit cider)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -13,6 +13,10 @@
  )
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'dracula t)
+
 
 (require 'misc)
 
@@ -25,8 +29,8 @@
 (package-install 'async)
 (package-install 'helm)
 (package-install 'helm-projectile)
-(package-install 'deadgrep)
-
+(package-install 'helm-rg)
+(package-install 'lsp-mode)
 
 (defun emacs-core-keybindings (bindings)
   (mapc
@@ -44,21 +48,27 @@
    ("<left>" . backward-to-word)
    ("<up>" . backward-paragraph)
    ("<down>" . forward-paragraph)
-   ("<f9>" . global-linum-mode)
+   ("<f9>" . global-display-line-numbers-mode)
    ("C-o" . er/expand-region)
    ("<f7>" . paredit-wrap-square)
    ("<f8>" . paredit-wrap-curly)
    ("M-o" . ace-window)
    ("<f1>" . mc/mark-next-like-this)
-   ("<f2>" . mc/mark-all-like-this)
-   ("C-c d" . deadgrep)))
+   ("<f2>" . mc/mark-all-like-this)))
 
 (projectile-add-known-project "~/rob/price_sheet")
 
 (helm-projectile-on)
 (global-set-key (kbd "C-c p f") 'helm-projectile-find-file)
 (global-set-key (kbd "C-c p h") 'helm-projectile)
+(global-set-key (kbd "C-c p s r") 'helm-projectile-rg)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-c s") 'projectile-switch-project)
 
 (add-hook 'clojure-mode-hook #'enable-paredit-mode)
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'cider-repl-mode-hook #'paredit-mode)
+
+(global-auto-revert-mode)
+
+(add-hook 'clojure-mode-hook 'lsp)
