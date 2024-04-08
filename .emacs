@@ -82,10 +82,12 @@
 
 (add-hook 'origami-mode-hook
           (lambda ()
-	    (define-key origami-mode-map (kbd "M-p") #'origami-toggle-node)
-	    (define-key origami-mode-map (kbd "M-l") #'origami-close-all-nodes)))
+	    (define-key origami-mode-map (kbd "M-p") #'origami-toggle-all-nodes)
+	    (define-key origami-mode-map (kbd "M-l") #'origami-toggle-node)))
 
 (add-hook 'cider-mode-hook
           (lambda ()
 	    (define-key cider-repl-mode-map  (kbd "<up>") #'cider-repl-backward-input)
 	    (define-key cider-repl-mode-map  (kbd "<down>") #'cider-repl-forward-input)))
+
+(global-origami-mode)
