@@ -63,6 +63,10 @@
    ("<f2>" . mc/mark-all-like-this)
    ("C-c j" . user-clj)))
 
+(defun git-branch-format ()
+  (interactive)
+  (insert (magit-get-current-branch)))
+
 (projectile-add-known-project "~/rob/price_sheet")
 
 (helm-projectile-on)
