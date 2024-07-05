@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(origami s dash lsp-mode helm-rg company company-mode helm-projectile async helm multiple-cursors ace-window expand-region projectile paredit magit cider)))
+   '(crux git-link origami s dash lsp-mode helm-rg company company-mode helm-projectile async helm multiple-cursors ace-window expand-region projectile paredit magit cider)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
