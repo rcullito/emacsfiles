@@ -72,6 +72,8 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-c s") 'projectile-switch-project)
 
+(global-set-key (kbd "C-x 4 t") 'crux-transpose-windows)
+
 (add-hook 'clojure-mode-hook #'enable-paredit-mode)
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
