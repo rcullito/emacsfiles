@@ -65,7 +65,7 @@
 
 (defun git-branch-format ()
   (interactive)
-  (insert (magit-get-current-branch)))
+  (insert "[" (magit-get-current-branch) "]"))
 
 (projectile-add-known-project "~/rob/price_sheet")
 
