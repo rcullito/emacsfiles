@@ -4,7 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(crux git-link origami s dash lsp-mode helm-rg company company-mode helm-projectile async helm multiple-cursors ace-window expand-region projectile paredit magit cider)))
+   '(crux git-link origami s dash lsp-mode helm-rg company company-mode helm-projectile async helm multiple-cursors ace-window expand-region projectile paredit magit cider))
+ '(magit-log-section-commit-count 40))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -78,6 +80,8 @@
 
 (global-set-key (kbd "C-x 4 t") 'crux-transpose-windows)
 
+(global-set-key (kbd "C-c r") 'git-branch-format)
+
 (add-hook 'clojure-mode-hook #'enable-paredit-mode)
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
@@ -97,3 +101,4 @@
 	    (define-key cider-repl-mode-map  (kbd "<down>") #'cider-repl-forward-input)))
 
 (global-origami-mode)
+(put 'set-goal-column 'disabled nil)
